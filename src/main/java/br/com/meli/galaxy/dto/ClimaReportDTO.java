@@ -25,4 +25,16 @@ public class ClimaReportDTO {
 		return optimalClimaPeriod;
 	}
 
+	public void setDroughtPeriods(Integer droughtPeriods) {
+		this.droughtPeriods = droughtPeriods;
+	}
+
+	public void setRainPeriods(Integer rainPeriods) {
+		this.rainPeriods = rainPeriods;
+	}
+
+	public void setOptimalClimaPeriod(Integer optimalClimaPeriod) {
+		this.optimalClimaPeriod = optimalClimaPeriod;
+	}
+
 }
