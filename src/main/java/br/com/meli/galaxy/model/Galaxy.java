@@ -15,12 +15,14 @@ public class Galaxy {
 		super();
 	}
 
+	
 	public Galaxy(List<CelestialObject> celestials, Dimension dimension) {
 		super();
 		this.celestials = celestials;
 		this.dimension = dimension;
 	}
-	
+
+
 	public List<CelestialObject> getCelestials() {
 		return celestials;
 	}
