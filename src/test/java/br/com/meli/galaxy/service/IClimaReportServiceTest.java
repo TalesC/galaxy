@@ -26,7 +26,7 @@ public class IClimaReportServiceTest {
 	
 	@Test
 	void mustGenerateAReportByPeriod() {
-		when(predictionService.predictByYear(10))
+		when(predictionService.predict(10))
 			.thenReturn(generatePredictionList());
 		
 		var report = service.generateReport(10);

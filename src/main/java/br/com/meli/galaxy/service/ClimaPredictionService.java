@@ -6,6 +6,6 @@ import br.com.meli.galaxy.model.ClimaPrediction;
 
 public interface ClimaPredictionService {
 
-	List<ClimaPrediction> predictByYear(Integer year);
+	List<ClimaPrediction> predict(Integer year);
 
 }

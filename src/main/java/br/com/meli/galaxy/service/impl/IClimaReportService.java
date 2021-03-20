@@ -18,7 +18,7 @@ public class IClimaReportService implements ClimaReportService {
 	public ClimaReportDTO generateReport(Integer year) {
 		
 		var report = new ClimaReportDTO(0, 0, 0);
-		var predictions = predictionService.predictByYear(year);
+		var predictions = predictionService.predict(year);
 		
 		predictions.forEach(prediction -> {
 			verifyPrediction(report, prediction);
