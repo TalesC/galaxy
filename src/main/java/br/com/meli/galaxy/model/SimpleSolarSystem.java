@@ -8,20 +8,10 @@ public class SimpleSolarSystem {
 	private Sun sun;
 	
 	
-	public SimpleSolarSystem() {
-		super();
-		this.setSun();
-	}
-
-	
-	public SimpleSolarSystem(List<Planet> planets) {
+		public SimpleSolarSystem(List<Planet> planets, Sun sun) {
 		super();
 		this.planets = planets;
-		this.setSun();
-	}
-
-	private void setSun() {
-		this.sun = new Sun();
+		this.sun = sun;
 	}
 
 
