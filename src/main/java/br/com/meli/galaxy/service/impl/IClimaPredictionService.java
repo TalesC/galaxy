@@ -60,8 +60,10 @@ public class IClimaPredictionService implements ClimaPredictionService {
 	}
 	
 	private boolean planetsAlignWithoutSun(SimpleSolarSystem solarSystem) {
-		// TODO Auto-generated method stub
-		return false;
+		var locations = solarSystem.getLocationOfPlanets();		
+		var iscolinear = MatrixUtils.isCollinear(locations); 
+		
+		return iscolinear;
 	}
 
 	private SimpleSolarSystem createSolarSystem() {
