@@ -6,17 +6,10 @@ import br.com.meli.galaxy.model.inter.CelestialObject;
 
 public class Sun implements CelestialObject {
 	
-	private Point location;
+	private static Point location = new Point(0, 0);
 	
 	public Point getLocation() {
-		return this.location;
-	}
-
-	public void setLocation(Galaxy galaxy) {
-		var height  = galaxy.getDimension().height / 2;
-		var width  = galaxy.getDimension().width / 2;
-		
-		this.location = new Point(width, height);
+		return Sun.location;
 	}
 		
 }

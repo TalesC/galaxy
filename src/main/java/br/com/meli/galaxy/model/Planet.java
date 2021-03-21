@@ -22,9 +22,8 @@ public class Planet implements CelestialObject {
 		return this.location;
 	}
 
-	public void setLocation(Galaxy galaxy, Integer day) {
+	public void setLocation(Integer day) {
 		var grades = speedGradesbyDay + day;
-		// using trigonometrics
 		Double positionX =  Math.sin(grades) * orbitRadious;
 		Double positionY =  Math.cos(grades) * orbitRadious;
 		
