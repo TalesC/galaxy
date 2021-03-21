@@ -1,6 +1,6 @@
 package br.com.meli.galaxy.model;
 
-import java.awt.geom.Point2D;
+import java.awt.Point;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,8 +34,8 @@ public class SimpleSolarSystem {
 	}
 	
 	
-	public List<Point2D> getLocations() {
-		List<Point2D> locations = this.celestials.stream()
+	public List<Point> getLocations() {
+		List<Point> locations = this.celestials.stream()
 				.map(celestial -> celestial.getLocation())
 				.collect(Collectors.toList());
 		
