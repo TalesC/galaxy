@@ -8,6 +8,7 @@ import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
 import br.com.meli.galaxy.service.ClimaPredictionService;
+import br.com.meli.galaxy.utils.MatrixUtils;
 
 public class IClimaPredictionService implements ClimaPredictionService {
 
@@ -43,8 +44,10 @@ public class IClimaPredictionService implements ClimaPredictionService {
 	}
 
 	private boolean planetsAlignWithSun(SimpleSolarSystem solarSystem) {
-		// TODO Auto-generated method stub
-		return false;
+		var locations = solarSystem.getLocations();		
+		var iscolinear = MatrixUtils.isCollinear(locations); 
+		
+		return iscolinear;
 	}
 	
 	private boolean planetsMakesTriangleWithSunInside(SimpleSolarSystem solarSystem) {
