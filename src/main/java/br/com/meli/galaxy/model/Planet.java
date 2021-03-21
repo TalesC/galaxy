@@ -37,4 +37,7 @@ public class Planet implements CelestialObject {
 		return planetName;
 	}
 	
+	public Integer getDaysByYear(Integer years) {
+		return (years * 360) / Math.abs(speedGradesbyDay);
+	}
 }

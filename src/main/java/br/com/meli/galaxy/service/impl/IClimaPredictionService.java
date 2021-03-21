@@ -14,10 +14,28 @@ public class IClimaPredictionService implements ClimaPredictionService {
 
 	@Override
 	public List<ClimaPrediction> predict(Integer year) {
+		var predictions = new ArrayList<>();
 		var solarSystem = this.createSolarSystem();
 		
+		solarSystem.getPlanets().forEach(planet -> {
+			predictions.addAll(predict(year, planet, solarSystem));
+		});
 		
+		return null;
+	}
+
+	private List<ClimaPrediction> predict(Integer year, Planet planet, SimpleSolarSystem solarSystem) {
+		var predictionsOfAPlanet = new ArrayList<ClimaPrediction>();
+		var days = planet.getDaysByYear(year);
 		
+		for(int day=0; day < days; day++) {
+			predictionsOfAPlanet.add(verifyClima(day, planet, solarSystem));
+		}
+		
+		return predictionsOfAPlanet;
+	}
+
+	private ClimaPrediction verifyClima(int day, Planet planet, SimpleSolarSystem solarSystem) {
 		return null;
 	}
 
