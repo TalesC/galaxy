@@ -34,8 +34,27 @@ public class IClimaPredictionService implements ClimaPredictionService {
 
 
 	private ClimaStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
+		
+		if(planetsAlignWithSun(solarSystem)) return ClimaStatusEnum.DROUGHT;
+		if(planetsMakesTriangleWithSunInside(solarSystem)) return ClimaStatusEnum.RAIN;
+		if(planetsAlignWithoutSun(solarSystem)) return ClimaStatusEnum.OPTIMAL;
+				
+		return ClimaStatusEnum.NONE;
+	}
+
+	private boolean planetsAlignWithSun(SimpleSolarSystem solarSystem) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
+	}
+	
+	private boolean planetsMakesTriangleWithSunInside(SimpleSolarSystem solarSystem) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private boolean planetsAlignWithoutSun(SimpleSolarSystem solarSystem) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private SimpleSolarSystem createSolarSystem() {
