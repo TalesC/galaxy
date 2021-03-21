@@ -39,12 +39,15 @@ public class IClimaPredictionService implements ClimaPredictionService {
 
 
 	private ClimaStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
+		var clima = ClimaStatusEnum.NONE;
+		if(planetsMakesTriangleWithSunInside(day, solarSystem)) clima = ClimaStatusEnum.RAIN;
 		
-		if(planetsAlignWithSun(day, solarSystem)) return ClimaStatusEnum.DROUGHT;
-		if(planetsMakesTriangleWithSunInside(day, solarSystem)) return ClimaStatusEnum.RAIN;
-		if(planetsAlignWithoutSun(day, solarSystem)) return ClimaStatusEnum.OPTIMAL;
-				
-		return ClimaStatusEnum.NONE;
+		if(planetsAlignWithoutSun(day, solarSystem)) clima = ClimaStatusEnum.OPTIMAL;
+		else if(planetsAlignWithSun(day, solarSystem)) clima = ClimaStatusEnum.DROUGHT;
+		
+		if(clima != ClimaStatusEnum.NONE) System.out.println(clima);
+		
+		return clima;
 	}
 
 	private boolean planetsAlignWithSun(int day, SimpleSolarSystem solarSystem) {

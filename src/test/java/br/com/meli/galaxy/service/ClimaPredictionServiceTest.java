@@ -14,10 +14,10 @@ public class ClimaPredictionServiceTest {
 	
 	@Test
 	void mustPredictClimaByEarthYears() {
-		var earthYears = 10;
+		var earthYears = 1;
 		var predictions = service.predict(earthYears);
 		
-		assertThat(predictions != null && !predictions.isEmpty());
-		assertThat(predictions.size() > 0);
+		assertThat(predictions != null && !predictions.isEmpty()).isTrue();
+		assertThat(predictions.size() > 0).isTrue();
 	}
 }

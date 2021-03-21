@@ -7,6 +7,11 @@ import java.util.List;
 public class TriangleUtils {
 
 	public static boolean contains(List<Point> vertices, Point point) {
+		var triangle = createTriangle(vertices);		
+		return triangle.contains(point);
+	}
+	
+	public static Polygon createTriangle(List<Point> vertices) {
 		var coordenatesX = new int[vertices.size()];
 		var coordenatesY = new int[vertices.size()];
 		
@@ -14,8 +19,9 @@ public class TriangleUtils {
 			coordenatesX[x] = vertices.get(x).x;
 			coordenatesY[x] = vertices.get(x).y;
 		}
+		var triangle = new Polygon(coordenatesX, coordenatesY, 3);
 		
-		return new Polygon(coordenatesX, coordenatesY, 3).contains(point);
+		return triangle;
 	}
 
 }

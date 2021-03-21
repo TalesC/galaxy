@@ -30,7 +30,7 @@ public class ClimaReportServiceTest {
 		
 		var report = service.generateReport(10);
 		
-		assertThat(report != null);
+		assertThat(report != null).isTrue();
 		assertThat(report.getDroughtPeriods().equals(1));
 		assertThat(report.getRainPeriods().equals(1));
 		assertThat(report.getOptimalClimaPeriod().equals(2));

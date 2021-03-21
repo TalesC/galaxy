@@ -20,7 +20,7 @@ public class ClimaReportController {
 	@GetMapping("/{year}")
 	public ResponseEntity<ClimaReportDTO> getReport(@PathVariable("year") Integer year) {
 		
-		if(year < 0) return ResponseEntity.badRequest().build();
+		if(year <= 0) return ResponseEntity.badRequest().build();
 		
 		var report = service.generateReport(year);
 		return ResponseEntity.ok(report);
