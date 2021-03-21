@@ -1,6 +1,7 @@
 package br.com.meli.galaxy.utils;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.List;
 
 public class MatrixUtils {
@@ -35,7 +36,7 @@ public class MatrixUtils {
 		return area;
 	}
 	 
-	/**public static void main(String[] args) {
+	public static void main(String[] args) {
 			var locations = Arrays.asList(
 							new Point(2, 1),
 							new Point(3, 4),
@@ -47,6 +48,5 @@ public class MatrixUtils {
 			
 			System.out.println("Is collinear: " + isCollinear);
 	}
-	**/	
-
+	
 }

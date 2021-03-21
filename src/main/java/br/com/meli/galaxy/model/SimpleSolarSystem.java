@@ -34,11 +34,20 @@ public class SimpleSolarSystem {
 	}
 	
 	
-	public List<Point> getLocations() {
+	public List<Point> getAllLocations() {
 		List<Point> locations = this.celestials.stream()
 				.map(celestial -> celestial.getLocation())
 				.collect(Collectors.toList());
 		
 		return locations;
 	}
+	
+	public List<Point> getLocationOfPlanets() {
+		var planets = getPlanets();
+		
+		return planets.stream()
+				.map(celestial -> celestial.getLocation())
+				.collect(Collectors.toList());
+	}
+	
 }
