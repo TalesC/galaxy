@@ -13,6 +13,7 @@ import br.com.meli.galaxy.model.inter.CelestialObject;
 public class SimpleSolarSystemBuilder {
 
 	private List<CelestialObject> celestials;
+	private Sun sun;
 	
 	public SimpleSolarSystemBuilder() {
 		super();
@@ -20,7 +21,7 @@ public class SimpleSolarSystemBuilder {
 	}
 
 	public SimpleSolarSystemBuilder sun() {
-		this.celestials.add(new Sun());
+		this.sun = new Sun();
 		return this;
 	}
 	
@@ -36,6 +37,6 @@ public class SimpleSolarSystemBuilder {
 	}
 	
 	public SimpleSolarSystem build() {
-		return new SimpleSolarSystem(this.celestials);
+		return new SimpleSolarSystem(this.celestials, sun);
 	}
 }

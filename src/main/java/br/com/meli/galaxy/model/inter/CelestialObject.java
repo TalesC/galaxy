@@ -4,6 +4,6 @@ import java.awt.Point;
 
 public interface CelestialObject {
 	
-	Point getLocation();
+	Point getLocation(Integer day);
 
 }

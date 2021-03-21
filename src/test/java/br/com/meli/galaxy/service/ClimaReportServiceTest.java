@@ -13,16 +13,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import br.com.meli.galaxy.model.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
-import br.com.meli.galaxy.service.impl.IClimaReportService;
 
 @SpringBootTest
-public class IClimaReportServiceTest {
+public class ClimaReportServiceTest {
 	
 	@MockBean
 	private ClimaPredictionService predictionService;
 	
 	@Autowired
-	private ClimaReportService service = new IClimaReportService();
+	private ClimaReportService service;
 	
 	@Test
 	void mustGenerateAReportByPeriod() {

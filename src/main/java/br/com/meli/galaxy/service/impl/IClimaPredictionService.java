@@ -3,6 +3,8 @@ package br.com.meli.galaxy.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.meli.galaxy.model.ClimaPrediction;
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
@@ -11,6 +13,7 @@ import br.com.meli.galaxy.service.ClimaPredictionService;
 import br.com.meli.galaxy.utils.MatrixUtils;
 import br.com.meli.galaxy.utils.TriangleUtils;
 
+@Service
 public class IClimaPredictionService implements ClimaPredictionService {
 
 	@Override
@@ -37,30 +40,30 @@ public class IClimaPredictionService implements ClimaPredictionService {
 
 	private ClimaStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
 		
-		if(planetsAlignWithSun(solarSystem)) return ClimaStatusEnum.DROUGHT;
-		if(planetsMakesTriangleWithSunInside(solarSystem)) return ClimaStatusEnum.RAIN;
-		if(planetsAlignWithoutSun(solarSystem)) return ClimaStatusEnum.OPTIMAL;
+		if(planetsAlignWithSun(day, solarSystem)) return ClimaStatusEnum.DROUGHT;
+		if(planetsMakesTriangleWithSunInside(day, solarSystem)) return ClimaStatusEnum.RAIN;
+		if(planetsAlignWithoutSun(day, solarSystem)) return ClimaStatusEnum.OPTIMAL;
 				
 		return ClimaStatusEnum.NONE;
 	}
 
-	private boolean planetsAlignWithSun(SimpleSolarSystem solarSystem) {
-		var locations = solarSystem.getAllLocations();		
+	private boolean planetsAlignWithSun(int day, SimpleSolarSystem solarSystem) {
+		var locations = solarSystem.getAllLocations(day);		
 		var iscolinear = MatrixUtils.isCollinear(locations); 
 		
 		return iscolinear;
 	}
 	
-	private boolean planetsMakesTriangleWithSunInside(SimpleSolarSystem solarSystem) {
-		var vertices = solarSystem.getLocationOfPlanets();
+	private boolean planetsMakesTriangleWithSunInside(int day, SimpleSolarSystem solarSystem) {
+		var vertices = solarSystem.getLocationOfPlanets(day);
 		var point = solarSystem.getSun().getLocation();
 		var isInsideOfTriangle = TriangleUtils.contains(vertices, point);
 		
 		return isInsideOfTriangle;
 	}
 	
-	private boolean planetsAlignWithoutSun(SimpleSolarSystem solarSystem) {
-		var locations = solarSystem.getLocationOfPlanets();		
+	private boolean planetsAlignWithoutSun(int day, SimpleSolarSystem solarSystem) {
+		var locations = solarSystem.getLocationOfPlanets(day);		
 		var iscolinear = MatrixUtils.isCollinear(locations); 
 		
 		return iscolinear;
