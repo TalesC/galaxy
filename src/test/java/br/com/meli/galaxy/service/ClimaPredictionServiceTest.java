@@ -18,5 +18,6 @@ public class ClimaPredictionServiceTest {
 		var predictions = service.predict(earthYears);
 		
 		assertThat(predictions != null && !predictions.isEmpty());
+		assertThat(predictions.size() > 0);
 	}
 }
