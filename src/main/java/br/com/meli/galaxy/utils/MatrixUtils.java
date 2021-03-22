@@ -34,18 +34,5 @@ public class MatrixUtils {
 				
 		return area;
 	}
-	 
-	/**public static void main(String[] args) {
-			var locations = Arrays.asList(
-							new Point(2, 1),
-							new Point(3, 4),
-							new Point(5, 3),
-							new Point(4, 3),
-							new Point(2, 1));
-			
-			var isCollinear = isCollinear(locations);
-			
-			System.out.println("Is collinear: " + isCollinear);
-	}**/
 	
 }

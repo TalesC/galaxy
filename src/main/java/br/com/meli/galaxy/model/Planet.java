@@ -21,7 +21,7 @@ public class Planet implements CelestialObject {
 
 	@Override
 	public Point getLocation(Integer day) {
-		var grades = speedGradesbyDay + day;
+		var grades = speedGradesbyDay * day;
 		Double positionX =  Math.sin(grades) * orbitRadiousKm;
 		Double positionY =  Math.cos(grades) * orbitRadiousKm;
 		
