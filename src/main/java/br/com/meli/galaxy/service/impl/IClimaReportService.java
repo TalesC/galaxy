@@ -18,7 +18,7 @@ public class IClimaReportService implements ClimaReportService {
 	@Override
 	public ClimaReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
 		
-		var report = new ClimaReportDTO(0, 0, 0);
+		var report = new ClimaReportDTO(0, 0, 0, planetName);
 		var predictions = predictionService.predict(year, planetName);
 		
 		predictions.forEach(prediction -> {

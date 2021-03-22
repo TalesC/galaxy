@@ -1,16 +1,21 @@
 package br.com.meli.galaxy.dto;
 
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
+
 public class ClimaReportDTO {
 	
 	private Integer droughtPeriods;
 	private Integer rainPeriods;
 	private Integer optimalClimaPeriod;
+	private PlanetNameEnum basedOnYearsOf;
 	
-	public ClimaReportDTO(Integer droughtPeriods, Integer rainPeriods, Integer optimalClimaPeriod) {
+	public ClimaReportDTO(Integer droughtPeriods, Integer rainPeriods, Integer optimalClimaPeriod,
+			PlanetNameEnum basedOnYearsOf) {
 		super();
 		this.droughtPeriods = droughtPeriods;
 		this.rainPeriods = rainPeriods;
 		this.optimalClimaPeriod = optimalClimaPeriod;
+		this.basedOnYearsOf = basedOnYearsOf;
 	}
 
 	public Integer getDroughtPeriods() {
@@ -25,6 +30,10 @@ public class ClimaReportDTO {
 		return optimalClimaPeriod;
 	}
 
+	public PlanetNameEnum getBasedOnYearsOf() {
+		return basedOnYearsOf;
+	}
+
 	public void setDroughtPeriods(Integer droughtPeriods) {
 		this.droughtPeriods = droughtPeriods;
 	}
@@ -37,4 +46,8 @@ public class ClimaReportDTO {
 		this.optimalClimaPeriod = optimalClimaPeriod;
 	}
 
+	public void setBasedOnYearsOf(PlanetNameEnum basedOnYearsOf) {
+		this.basedOnYearsOf = basedOnYearsOf;
+	}
+	
 }

@@ -28,9 +28,7 @@ public class ClimaReportControllerTest {
 	@Test
 	void mustReturnStatus200OKWhenGenerateReportByFerengeYears() throws Exception {
 		var uri = new URI("/report/ferenge/1");
-		when(service.generateReport(1, PlanetNameEnum.FERENGE)).thenReturn(new ClimaReportDTO(10, 11, 20));
-		
-		verifyStatus200OK(uri);
+		verifyStatus200OK(uri,  PlanetNameEnum.FERENGE);
 	}
 	
 	@Test
@@ -41,10 +39,8 @@ public class ClimaReportControllerTest {
 	
 	@Test
 	void mustReturnStatus200OKWhenGenerateReportByBetasoidYears() throws Exception {
-		var uri = new URI("/report/ferenge/1");
-		when(service.generateReport(1, PlanetNameEnum.BETASOID)).thenReturn(new ClimaReportDTO(10, 11, 20));
-		
-		verifyStatus200OK(uri);
+		var uri = new URI("/report/betasoid/1");
+		verifyStatus200OK(uri,  PlanetNameEnum.BETASOID);
 	}
 	
 	@Test
@@ -56,9 +52,7 @@ public class ClimaReportControllerTest {
 	@Test
 	void mustReturnStatus200OKWhenGenerateReportByVulcanoYears() throws Exception {
 		var uri = new URI("/report/vulcano/1");
-		when(service.generateReport(1, PlanetNameEnum.VULCANO)).thenReturn(new ClimaReportDTO(10, 11, 20));
-		
-		verifyStatus200OK(uri);
+		verifyStatus200OK(uri,  PlanetNameEnum.VULCANO);
 	}
 	
 	@Test
@@ -67,7 +61,9 @@ public class ClimaReportControllerTest {
 		verifyStatus400BadRequest(uri);
 	}
 	
-	private void verifyStatus200OK(URI uri) throws Exception {
+	private void verifyStatus200OK(URI uri, PlanetNameEnum planet) throws Exception {
+		when(service.generateReport(1, planet)).thenReturn(getReport(planet));
+		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 		   .andExpect(MockMvcResultMatchers.status().isOk());
 	}
@@ -77,4 +73,7 @@ public class ClimaReportControllerTest {
 		   .andExpect(MockMvcResultMatchers.status().isBadRequest());
 	}
 
+	private ClimaReportDTO getReport(PlanetNameEnum planet) {
+		return new ClimaReportDTO(10, 11, 20, planet);
+	}
 }
