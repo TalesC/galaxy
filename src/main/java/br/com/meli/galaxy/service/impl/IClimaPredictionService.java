@@ -44,10 +44,10 @@ public class IClimaPredictionService implements ClimaPredictionService {
 		var clima = ClimaStatusEnum.NONE;
 		
 		if(planetsMakesTriangleWithSunInside(day, solarSystem)) clima = ClimaStatusEnum.RAIN;
-		else
+		else {
 			if(planetsAlignWithSun(day, solarSystem)) clima = ClimaStatusEnum.DROUGHT;
-			else
-				if(planetsAlignWithoutSun(day, solarSystem)) clima = ClimaStatusEnum.OPTIMAL;
+			if(planetsAlignWithoutSun(day, solarSystem)) clima = ClimaStatusEnum.OPTIMAL;
+		}
 		
 		return clima;
 	}

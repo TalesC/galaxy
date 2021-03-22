@@ -19,7 +19,7 @@ public class ClimaPredictionServiceTest {
 	private ClimaPredictionService service;
 	
 	@Test
-	void mustPredictClimaBy10VulcanoYears() {
+	void mustPredictClimaBy10VULCANOYears() {
 		var years = 10;
 		var predictions = service.predict(years, PlanetNameEnum.VULCANO);
 		
@@ -27,6 +27,26 @@ public class ClimaPredictionServiceTest {
 		assertThat(predictions.size() > 0).isTrue();
 		assertThat(getAnyPredition(predictions)).isNotNull();
 	}
+	
+	@Test
+	void mustPredictClimaBy10BETASOIDYears() {
+		var years = 10;
+		var predictions = service.predict(years, PlanetNameEnum.BETASOID);
+		
+		assertThat(predictions != null && !predictions.isEmpty()).isTrue();
+		assertThat(predictions.size() > 0).isTrue();
+		assertThat(getAnyPredition(predictions)).isNotNull();
+	}
+	
+	@Test
+	void mustPredictClimaBy10FERENGEYears() {
+		var years = 10;
+		var predictions = service.predict(years, PlanetNameEnum.FERENGE);
+		
+		assertThat(predictions != null && !predictions.isEmpty()).isTrue();
+		assertThat(predictions.size() > 0).isTrue();
+		assertThat(getAnyPredition(predictions)).isNotNull();
+	}	
 	
 	private ClimaPrediction getAnyPredition(List<ClimaPrediction> predictions) {
 		var rain = predictions.stream()
