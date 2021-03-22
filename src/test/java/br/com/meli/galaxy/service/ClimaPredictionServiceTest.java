@@ -30,15 +30,14 @@ public class ClimaPredictionServiceTest {
 	
 	private ClimaPrediction getAnyPredition(List<ClimaPrediction> predictions) {
 		var rain = predictions.stream()
-						.filter(prediction -> verifyConditions(prediction))
+						.filter(prediction -> verifyStatus(prediction))
 						.findAny().orElse(null);
 		return rain;
 	}
 	
-	private boolean verifyConditions(ClimaPrediction prediction) {
-		return  prediction.getClima().equals(ClimaStatusEnum.RAIN) ||
+	private boolean verifyStatus(ClimaPrediction prediction) {
+		return prediction.getClima().equals(ClimaStatusEnum.RAIN) ||
 				prediction.getClima().equals(ClimaStatusEnum.DROUGHT) ||
 				prediction.getClima().equals(ClimaStatusEnum.OPTIMAL);
 	}
-	
 }
