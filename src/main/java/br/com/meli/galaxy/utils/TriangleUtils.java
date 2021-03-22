@@ -2,13 +2,14 @@ package br.com.meli.galaxy.utils;
 
 import java.awt.Point;
 import java.awt.Polygon;
+import java.awt.geom.Point2D;
 import java.util.List;
 
 public class TriangleUtils {
 
 	public static boolean contains(List<Point> vertices, Point point) {
 		var triangle = createTriangle(vertices);		
-		return triangle.contains(point);
+		return triangle.contains((Point2D) point.clone());
 	}
 	
 	private static Polygon createTriangle(List<Point> vertices) {

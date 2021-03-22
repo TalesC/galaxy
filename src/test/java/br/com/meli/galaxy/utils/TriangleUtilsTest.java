@@ -32,8 +32,8 @@ public class TriangleUtilsTest {
 	private List<Point> generatePoints(){
 		return Arrays.asList(
 						new Point(0, 1),
-						new Point(-1, 0),
-						new Point(1, 0)
+						new Point(-1, -1),
+						new Point(1, -1)
 					 );
 	}
 

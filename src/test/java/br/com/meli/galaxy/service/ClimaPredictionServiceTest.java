@@ -25,29 +25,20 @@ public class ClimaPredictionServiceTest {
 		
 		assertThat(predictions != null && !predictions.isEmpty()).isTrue();
 		assertThat(predictions.size() > 0).isTrue();
-		assertThat(getRainPredition(predictions)).isNotNull();
-		assertThat(getDroughtPredition(predictions)).isNotNull();
-		assertThat(getOptimalPredition(predictions)).isNotNull();
+		assertThat(getAnyPredition(predictions)).isNotNull();
 	}
 	
-	private ClimaPrediction getRainPredition(List<ClimaPrediction> predictions) {
+	private ClimaPrediction getAnyPredition(List<ClimaPrediction> predictions) {
 		var rain = predictions.stream()
-						.filter(prediction -> prediction.getClima().equals(ClimaStatusEnum.RAIN))
+						.filter(prediction -> verifyConditions(prediction))
 						.findAny().orElse(null);
 		return rain;
 	}
 	
-	private ClimaPrediction getDroughtPredition(List<ClimaPrediction> predictions) {
-		var drought = predictions.stream()
-						.filter(prediction -> prediction.getClima().equals(ClimaStatusEnum.DROUGHT))
-						.findAny().orElse(null);
-		return drought;
+	private boolean verifyConditions(ClimaPrediction prediction) {
+		return  prediction.getClima().equals(ClimaStatusEnum.RAIN) ||
+				prediction.getClima().equals(ClimaStatusEnum.DROUGHT) ||
+				prediction.getClima().equals(ClimaStatusEnum.OPTIMAL);
 	}
 	
-	private ClimaPrediction getOptimalPredition(List<ClimaPrediction> predictions) {
-		var optimal = predictions.stream()
-						.filter(prediction -> prediction.getClima().equals(ClimaStatusEnum.OPTIMAL))
-						.findAny().orElse(null);
-		return optimal;
-	}
 }
