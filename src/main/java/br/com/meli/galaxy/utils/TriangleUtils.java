@@ -11,7 +11,7 @@ public class TriangleUtils {
 		return triangle.contains(point);
 	}
 	
-	public static Polygon createTriangle(List<Point> vertices) {
+	private static Polygon createTriangle(List<Point> vertices) {
 		var coordenatesX = new int[vertices.size()];
 		var coordenatesY = new int[vertices.size()];
 		
