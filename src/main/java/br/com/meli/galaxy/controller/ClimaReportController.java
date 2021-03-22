@@ -17,13 +17,30 @@ public class ClimaReportController {
 	
 	@Autowired
 	private ClimaReportService service;
+		
+	
+	@GetMapping("/ferenge/{year}")
+	public ResponseEntity<ClimaReportDTO> getReportByFerengeYears(@PathVariable("year") Integer year) {
+		var report = getReport(year, PlanetNameEnum.FERENGE);
+		return report;
+	}
+	
+	@GetMapping("/betasoid/{year}")
+	public ResponseEntity<ClimaReportDTO> getReportByBetasoidYears(@PathVariable("year") Integer year) {
+		var report = getReport(year, PlanetNameEnum.BETASOID);
+		return report;
+	}
 	
 	@GetMapping("/vulcano/{year}")
 	public ResponseEntity<ClimaReportDTO> getReportByVulcanoYears(@PathVariable("year") Integer year) {
-		
+		var report = getReport(year, PlanetNameEnum.VULCANO);
+		return report;
+	}
+	
+	private ResponseEntity<ClimaReportDTO> getReport(Integer year, PlanetNameEnum planet) {
 		if(year <= 0) return ResponseEntity.badRequest().build();
 		
-		var report = service.generateReport(year, PlanetNameEnum.VULCANO);
+		var report = service.generateReport(year, planet);
 		return ResponseEntity.ok(report);
 	}
 	

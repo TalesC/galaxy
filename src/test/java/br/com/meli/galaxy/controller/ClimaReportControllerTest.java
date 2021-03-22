@@ -26,21 +26,55 @@ public class ClimaReportControllerTest {
 	private ClimaReportService service;
 	
 	@Test
-	void mustReturnStatus200OKWhenGenerateReport() throws Exception {
-		var uri = new URI("/report/vulcano/1");
+	void mustReturnStatus200OKWhenGenerateReportByFerengeYears() throws Exception {
+		var uri = new URI("/report/ferenge/1");
+		when(service.generateReport(1, PlanetNameEnum.FERENGE)).thenReturn(new ClimaReportDTO(10, 11, 20));
 		
-		when(service.generateReport(1, PlanetNameEnum.VULCANO)).thenReturn(new ClimaReportDTO(10, 11, 20));
-		
-		mockMvc.perform(MockMvcRequestBuilders.get(uri))
-			   .andExpect(MockMvcResultMatchers.status().isOk());
+		verifyStatus200OK(uri);
 	}
 	
 	@Test
-	void mustReturnStatus400BadRequestWhenSensInvalidInput() throws Exception {
-		var uri = new URI("/report/vulcano/-1");
+	void mustReturnStatus400BadRequestWhenGenerateByFerengeYears() throws Exception {
+		var uri = new URI("/report/ferenge/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus200OKWhenGenerateReportByBetasoidYears() throws Exception {
+		var uri = new URI("/report/ferenge/1");
+		when(service.generateReport(1, PlanetNameEnum.BETASOID)).thenReturn(new ClimaReportDTO(10, 11, 20));
 		
+		verifyStatus200OK(uri);
+	}
+	
+	@Test
+	void mustReturnStatus400BadRequestWhenGenerateByBetasoidYears() throws Exception {
+		var uri = new URI("/report/betasoid/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus200OKWhenGenerateReportByVulcanoYears() throws Exception {
+		var uri = new URI("/report/vulcano/1");
+		when(service.generateReport(1, PlanetNameEnum.VULCANO)).thenReturn(new ClimaReportDTO(10, 11, 20));
+		
+		verifyStatus200OK(uri);
+	}
+	
+	@Test
+	void mustReturnStatus400BadRequestWhenGenerateByVulcanoYears() throws Exception {
+		var uri = new URI("/report/vulcano/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	private void verifyStatus200OK(URI uri) throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
-			   .andExpect(MockMvcResultMatchers.status().isBadRequest());
+		   .andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	private void verifyStatus400BadRequest(URI uri) throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get(uri))
+		   .andExpect(MockMvcResultMatchers.status().isBadRequest());
 	}
 
 }
