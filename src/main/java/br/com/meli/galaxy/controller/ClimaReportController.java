@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.meli.galaxy.dto.ClimaReportDTO;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaReportService;
 
 @RestController
@@ -17,12 +18,12 @@ public class ClimaReportController {
 	@Autowired
 	private ClimaReportService service;
 	
-	@GetMapping("/{year}")
-	public ResponseEntity<ClimaReportDTO> getReport(@PathVariable("year") Integer year) {
+	@GetMapping("/vulcano/{year}")
+	public ResponseEntity<ClimaReportDTO> getReportByVulcanoYears(@PathVariable("year") Integer year) {
 		
 		if(year <= 0) return ResponseEntity.badRequest().build();
 		
-		var report = service.generateReport(year);
+		var report = service.generateReport(year, PlanetNameEnum.VULCANO);
 		return ResponseEntity.ok(report);
 	}
 	

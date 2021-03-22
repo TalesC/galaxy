@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import br.com.meli.galaxy.model.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 @SpringBootTest
 public class ClimaReportServiceTest {
@@ -25,10 +26,10 @@ public class ClimaReportServiceTest {
 	
 	@Test
 	void mustGenerateAReportByPeriod() {
-		when(predictionService.predict(10))
+		when(predictionService.predict(10, PlanetNameEnum.VULCANO))
 			.thenReturn(generatePredictionList());
 		
-		var report = service.generateReport(10);
+		var report = service.generateReport(10, PlanetNameEnum.VULCANO);
 		
 		assertThat(report != null).isTrue();
 		assertThat(report.getDroughtPeriods().equals(1));

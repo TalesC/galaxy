@@ -8,11 +8,10 @@ import br.com.meli.galaxy.model.Planet;
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.Sun;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.model.inter.CelestialObject;
 
 public class SimpleSolarSystemBuilder {
 
-	private List<CelestialObject> celestials;
+	private List<Planet> celestials;
 	private Sun sun;
 	
 	public SimpleSolarSystemBuilder() {

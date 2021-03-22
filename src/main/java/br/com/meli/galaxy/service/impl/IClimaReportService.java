@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.meli.galaxy.dto.ClimaReportDTO;
 import br.com.meli.galaxy.model.ClimaPrediction;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaPredictionService;
 import br.com.meli.galaxy.service.ClimaReportService;
 
@@ -15,10 +16,10 @@ public class IClimaReportService implements ClimaReportService {
 	private ClimaPredictionService predictionService;
 
 	@Override
-	public ClimaReportDTO generateReport(Integer year) {
+	public ClimaReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
 		
 		var report = new ClimaReportDTO(0, 0, 0);
-		var predictions = predictionService.predict(year);
+		var predictions = predictionService.predict(year, planetName);
 		
 		predictions.forEach(prediction -> {
 			verifyPrediction(report, prediction);

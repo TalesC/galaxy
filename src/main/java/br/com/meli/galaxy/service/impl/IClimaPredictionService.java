@@ -9,6 +9,7 @@ import br.com.meli.galaxy.model.ClimaPrediction;
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaPredictionService;
 import br.com.meli.galaxy.utils.MatrixUtils;
 import br.com.meli.galaxy.utils.TriangleUtils;
@@ -17,14 +18,15 @@ import br.com.meli.galaxy.utils.TriangleUtils;
 public class IClimaPredictionService implements ClimaPredictionService {
 
 	@Override
-	public List<ClimaPrediction> predict(Integer earthYear) {
+	public List<ClimaPrediction> predict(Integer years, PlanetNameEnum planetName) {
 		var solarSystem = this.createSolarSystem();
-		var days = earthYear * 365;
+		var days = solarSystem.findPlanet(planetName).getDaysByYear(years);
 		
 		var predictions = predict(days, solarSystem);
 		
 		return predictions;
 	}
+	
 
 	private List<ClimaPrediction> predict(Integer days, SimpleSolarSystem solarSystem) {
 		var predictionsOfAPlanet = new ArrayList<ClimaPrediction>();

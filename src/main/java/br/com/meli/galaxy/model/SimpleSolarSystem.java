@@ -4,26 +4,30 @@ import java.awt.Point;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.meli.galaxy.model.inter.CelestialObject;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public class SimpleSolarSystem {
 	
-	private List<CelestialObject> celestials;
+	private List<Planet> planets;
 	private Sun sun;
 	
 	
-	public SimpleSolarSystem(List<CelestialObject> celestials, Sun sun) {
+	public SimpleSolarSystem(List<Planet> planets, Sun sun) {
 		super();
-		this.celestials = celestials;
+		this.planets = planets;
 		this.sun = sun;
 	}
 
 
-	public List<CelestialObject> getPlanets() {
-		return this.celestials
-					.stream()
-					.filter(planet -> planet instanceof Planet)
-					.collect(Collectors.toList());
+	public List<Planet> getPlanets() {
+		return this.planets;
+	}
+	
+	public Planet findPlanet(PlanetNameEnum planetName) {
+		return this.planets.stream()
+				.filter(planet -> planet.getPlanetName().equals(planetName))
+				.findFirst()
+				.get();
 	}
 
 
@@ -33,7 +37,7 @@ public class SimpleSolarSystem {
 	
 	
 	public List<Point> getAllLocations(Integer day) {
-		List<Point> locations = this.celestials.stream()
+		List<Point> locations = this.planets.stream()
 								.map(celestial -> celestial.getLocation(day))
 								.collect(Collectors.toList());
 		locations.add(this.sun.getLocation());

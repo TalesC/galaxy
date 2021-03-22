@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import br.com.meli.galaxy.dto.ClimaReportDTO;
+import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaReportService;
 
 @WebMvcTest(ClimaReportController.class)
@@ -26,9 +27,9 @@ public class ClimaReportControllerTest {
 	
 	@Test
 	void mustReturnStatus200OKWhenGenerateReport() throws Exception {
-		var uri = new URI("/report/1");
+		var uri = new URI("/report/vulcano/1");
 		
-		when(service.generateReport(1)).thenReturn(new ClimaReportDTO(10, 11, 20));
+		when(service.generateReport(1, PlanetNameEnum.VULCANO)).thenReturn(new ClimaReportDTO(10, 11, 20));
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 			   .andExpect(MockMvcResultMatchers.status().isOk());
@@ -36,7 +37,7 @@ public class ClimaReportControllerTest {
 	
 	@Test
 	void mustReturnStatus400BadRequestWhenSensInvalidInput() throws Exception {
-		var uri = new URI("/report/-1");
+		var uri = new URI("/report/vulcano/-1");
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 			   .andExpect(MockMvcResultMatchers.status().isBadRequest());
