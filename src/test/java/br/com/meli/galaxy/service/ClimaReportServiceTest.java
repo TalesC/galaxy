@@ -25,11 +25,25 @@ public class ClimaReportServiceTest {
 	private ClimaReportService service;
 	
 	@Test
-	void mustGenerateAReportByPeriod() {
-		when(predictionService.predict(10, PlanetNameEnum.VULCANO))
-			.thenReturn(generatePredictionList());
-		
-		var report = service.generateReport(10, PlanetNameEnum.VULCANO);
+	void mustGenerateAReportByPeriodOfFerenge() {
+		generateReport(10, PlanetNameEnum.FERENGE);
+	}
+	
+	@Test
+	void mustGenerateAReportByPeriodOfBetasoid() {
+		generateReport(10, PlanetNameEnum.BETASOID);
+	}
+	
+	@Test
+	void mustGenerateAReportByPeriodOfVulcano() {
+		generateReport(10, PlanetNameEnum.VULCANO);
+	}
+	
+	private void generateReport(Integer years, PlanetNameEnum planet) {
+		when(predictionService.predict(years, planet))
+		.thenReturn(generatePredictionList());
+	
+		var report = service.generateReport(years, planet);
 		
 		assertThat(report != null).isTrue();
 		assertThat(report.getDroughtPeriods().equals(1));
