@@ -8,5 +8,5 @@ import br.com.meli.galaxy.model.ent.ClimaPredictionId;
 
 @Repository
 public interface ClimaPredictionRepository extends JpaRepository<ClimaPrediction, ClimaPredictionId>{
-
+	
 }
