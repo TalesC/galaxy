@@ -5,18 +5,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
+import br.com.meli.galaxy.service.impl.IClimaPredictionService;
 
-@SpringBootTest
 public class ClimaPredictionServiceTest {
 
-	@Autowired
-	private ClimaPredictionService service;
+	private ClimaPredictionService service = new IClimaPredictionService();
 	
 	@Test
 	void mustPredictClimaBy10VULCANOYears() {
