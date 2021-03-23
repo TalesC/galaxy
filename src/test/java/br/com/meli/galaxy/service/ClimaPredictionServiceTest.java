@@ -19,8 +19,6 @@ public class ClimaPredictionServiceTest {
 	void mustFindPredictionByDayOfPlanet() {
 		var prediction = service.findClimaByDay(1, PlanetNameEnum.VULCANO);
 		
-		System.out.println("############################## clima= "+ prediction.getClima());
-		
 		assertThat(prediction).isNotNull();
 		assertThat(prediction.getDay()).isEqualTo(1);
 		assertThat(prediction.getClima()).isEqualTo(ClimaStatusEnum.NONE);
