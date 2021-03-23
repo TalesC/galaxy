@@ -1,4 +1,4 @@
-package br.com.meli.galaxy;
+package br.com.meli.galaxy.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
