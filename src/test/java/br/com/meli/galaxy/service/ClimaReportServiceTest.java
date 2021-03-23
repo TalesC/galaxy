@@ -19,7 +19,7 @@ import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 public class ClimaReportServiceTest {
 	
 	@MockBean
-	private ClimaPredictionService predictionService;
+	private ClimaPredictionGeneratorService predictionService;
 	
 	@Autowired
 	private ClimaReportService service;

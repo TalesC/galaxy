@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.repository.ClimaPredictionRepository;
-import br.com.meli.galaxy.service.ClimaPredictionService;
+import br.com.meli.galaxy.service.ClimaPredictionGeneratorService;
 
 
 @Component
@@ -24,7 +24,7 @@ public class CreateClimaDatabase {
 	private static final Logger LOG = LoggerFactory.getLogger(CreateClimaDatabase.class);
 	
 	@Autowired
-	private ClimaPredictionService service;
+	private ClimaPredictionGeneratorService service;
 	
 	@Autowired
 	private ClimaPredictionRepository repository;

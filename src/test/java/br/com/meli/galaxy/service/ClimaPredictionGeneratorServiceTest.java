@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.impl.IClimaPredictionService;
+import br.com.meli.galaxy.service.impl.IClimaPredictionGeneratorService;
 
-public class ClimaPredictionServiceTest {
+public class ClimaPredictionGeneratorServiceTest {
 
-	private ClimaPredictionService service = new IClimaPredictionService();
+	private ClimaPredictionGeneratorService service = new IClimaPredictionGeneratorService();
 	
 	@Test
 	void mustPredictClimaBy10VULCANOYears() {

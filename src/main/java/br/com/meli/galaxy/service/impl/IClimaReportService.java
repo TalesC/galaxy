@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 import br.com.meli.galaxy.dto.ClimaReportDTO;
 import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaPredictionService;
+import br.com.meli.galaxy.service.ClimaPredictionGeneratorService;
 import br.com.meli.galaxy.service.ClimaReportService;
 
 @Service
 public class IClimaReportService implements ClimaReportService {
 	
 	@Autowired
-	private ClimaPredictionService predictionService;
+	private ClimaPredictionGeneratorService predictionService;
 
 	@Override
 	public ClimaReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
