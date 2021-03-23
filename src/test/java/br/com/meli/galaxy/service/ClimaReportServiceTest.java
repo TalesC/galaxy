@@ -41,7 +41,7 @@ public class ClimaReportServiceTest {
 	
 	private void generateReport(Integer years, PlanetNameEnum planet) {
 		when(predictionService.predict(years, planet))
-		.thenReturn(generatePredictionList());
+		.thenReturn(generatePredictionList(planet));
 	
 		var report = service.generateReport(years, planet);
 		
@@ -51,13 +51,13 @@ public class ClimaReportServiceTest {
 		assertThat(report.getOptimalClimaPeriod().equals(2));
 	}
 	
-	private List<ClimaPrediction> generatePredictionList(){
+	private List<ClimaPrediction> generatePredictionList(PlanetNameEnum planet){
 		return Arrays.asList(
-				new ClimaPrediction(1, ClimaStatusEnum.OPTIMAL),
-				new ClimaPrediction(2, ClimaStatusEnum.DROUGHT),
-				new ClimaPrediction(3, ClimaStatusEnum.OPTIMAL),
-				new ClimaPrediction(4, ClimaStatusEnum.RAIN),
-				new ClimaPrediction(5, ClimaStatusEnum.NONE));
+				new ClimaPrediction(1, planet, ClimaStatusEnum.OPTIMAL),
+				new ClimaPrediction(2, planet, ClimaStatusEnum.DROUGHT),
+				new ClimaPrediction(3, planet, ClimaStatusEnum.OPTIMAL),
+				new ClimaPrediction(4, planet, ClimaStatusEnum.RAIN),
+				new ClimaPrediction(5, planet, ClimaStatusEnum.NONE));
 	}
 
 }

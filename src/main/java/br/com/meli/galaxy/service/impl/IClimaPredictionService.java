@@ -22,18 +22,21 @@ public class IClimaPredictionService implements ClimaPredictionService {
 		var solarSystem = this.createSolarSystem();
 		var days = solarSystem.findPlanet(planetName).getDaysByYear(years);
 		
-		var predictions = predict(days, solarSystem);
+		var predictions = predict(days, solarSystem, planetName);
 		
 		return predictions;
 	}
 	
 
-	private List<ClimaPrediction> predict(Integer days, SimpleSolarSystem solarSystem) {
+	private List<ClimaPrediction> predict(Integer days,SimpleSolarSystem solarSystem,
+										  PlanetNameEnum planetName) {
+		
 		var predictionsOfAPlanet = new ArrayList<ClimaPrediction>();
 		
 		for(int day=0; day < days; day++) {
 			predictionsOfAPlanet.add(new ClimaPrediction(
 										day,
+										planetName,
 										verifyClima(day, solarSystem)));
 		}		
 		return predictionsOfAPlanet;
