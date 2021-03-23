@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.meli.galaxy.dto.ClimaReportDTO;
-import br.com.meli.galaxy.model.ClimaPrediction;
+import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaPredictionService;
 import br.com.meli.galaxy.service.ClimaReportService;

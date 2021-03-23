@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.meli.galaxy.model.ClimaPrediction;
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
+import br.com.meli.galaxy.model.ent.ClimaPrediction;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.ClimaPredictionService;

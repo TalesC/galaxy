@@ -1,4 +1,4 @@
-package br.com.meli.galaxy.model;
+package br.com.meli.galaxy.model.ent;
 
 import java.io.Serializable;
 
@@ -11,6 +11,11 @@ public class ClimaPredictionId implements Serializable {
 	private Integer day;
 	private PlanetNameEnum planet;
 	
+	
+	public ClimaPredictionId() {
+		super();
+	}
+
 	public ClimaPredictionId(Integer day, PlanetNameEnum planet) {
 		super();
 		this.day = day;
