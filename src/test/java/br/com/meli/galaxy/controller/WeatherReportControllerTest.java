@@ -32,8 +32,14 @@ public class WeatherReportControllerTest {
 	}
 	
 	@Test
-	void mustReturnStatus400BadRequestWhenGenerateByFerengeYears() throws Exception {
+	void mustReturnStatus400BadRequestWhenGenerateReportByFerengeYears() throws Exception {
 		var uri = new URI("/report/ferenge/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus400BadRequestWhenGenerateReportOver10FerengeYears() throws Exception {
+		var uri = new URI("/report/ferenge/100");
 		verifyStatus400BadRequest(uri);
 	}
 	
@@ -44,8 +50,14 @@ public class WeatherReportControllerTest {
 	}
 	
 	@Test
-	void mustReturnStatus400BadRequestWhenGenerateByBetasoidYears() throws Exception {
+	void mustReturnStatus400BadRequestWhenGenerateReportByBetasoidYears() throws Exception {
 		var uri = new URI("/report/betasoid/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus400BadRequestWhenGenerateReportOver10BetasoidYears() throws Exception {
+		var uri = new URI("/report/betasoid/100");
 		verifyStatus400BadRequest(uri);
 	}
 	
@@ -56,8 +68,14 @@ public class WeatherReportControllerTest {
 	}
 	
 	@Test
-	void mustReturnStatus400BadRequestWhenGenerateByVulcanoYears() throws Exception {
+	void mustReturnStatus400BadRequestWhenGenerateReportByVulcanoYears() throws Exception {
 		var uri = new URI("/report/vulcano/-1");
+		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus400BadRequestWhenGenerateReportByOver10VulcanoYears() throws Exception {
+		var uri = new URI("/report/vulcano/100");
 		verifyStatus400BadRequest(uri);
 	}
 	

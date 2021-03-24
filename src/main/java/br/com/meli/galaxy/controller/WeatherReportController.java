@@ -38,7 +38,7 @@ public class WeatherReportController {
 	}
 	
 	private ResponseEntity<WeatherReportDTO> getReport(Integer year, PlanetNameEnum planet) {
-		if(year <= 0) return ResponseEntity.badRequest().build();
+		if(year <= 0 || year > 10) return ResponseEntity.badRequest().build();
 		
 		var report = service.generateReport(year, planet);
 		return ResponseEntity.ok(report);
