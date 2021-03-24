@@ -7,37 +7,37 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.meli.galaxy.dto.ClimaReportDTO;
+import br.com.meli.galaxy.dto.WeatherReportDTO;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaReportService;
+import br.com.meli.galaxy.service.WeatherReportService;
 
 @RestController
 @RequestMapping("/report")
-public class ClimaReportController {
+public class WeatherReportController {
 	
 	@Autowired
-	private ClimaReportService service;
+	private WeatherReportService service;
 		
 	
 	@GetMapping("/ferenge/{year}")
-	public ResponseEntity<ClimaReportDTO> getReportByFerengeYears(@PathVariable("year") Integer year) {
+	public ResponseEntity<WeatherReportDTO> getReportByFerengeYears(@PathVariable("year") Integer year) {
 		var report = getReport(year, PlanetNameEnum.FERENGE);
 		return report;
 	}
 	
 	@GetMapping("/betasoid/{year}")
-	public ResponseEntity<ClimaReportDTO> getReportByBetasoidYears(@PathVariable("year") Integer year) {
+	public ResponseEntity<WeatherReportDTO> getReportByBetasoidYears(@PathVariable("year") Integer year) {
 		var report = getReport(year, PlanetNameEnum.BETASOID);
 		return report;
 	}
 	
 	@GetMapping("/vulcano/{year}")
-	public ResponseEntity<ClimaReportDTO> getReportByVulcanoYears(@PathVariable("year") Integer year) {
+	public ResponseEntity<WeatherReportDTO> getReportByVulcanoYears(@PathVariable("year") Integer year) {
 		var report = getReport(year, PlanetNameEnum.VULCANO);
 		return report;
 	}
 	
-	private ResponseEntity<ClimaReportDTO> getReport(Integer year, PlanetNameEnum planet) {
+	private ResponseEntity<WeatherReportDTO> getReport(Integer year, PlanetNameEnum planet) {
 		if(year <= 0) return ResponseEntity.badRequest().build();
 		
 		var report = service.generateReport(year, planet);

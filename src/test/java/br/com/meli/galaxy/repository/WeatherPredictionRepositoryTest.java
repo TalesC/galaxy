@@ -9,20 +9,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
-import br.com.meli.galaxy.model.ent.ClimaPredictionId;
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
+import br.com.meli.galaxy.model.ent.WeatherPredictionId;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 @DataJpaTest
-public class ClimaPredictionRepositoryTest {
+public class WeatherPredictionRepositoryTest {
 		
 	@Autowired
-	private ClimaPredictionRepository repository;
+	private WeatherPredictionRepository repository;
 
 	@Test
 	void mustSaveClimaPrediction() {
-		var predition = new ClimaPrediction(1, PlanetNameEnum.VULCANO, ClimaStatusEnum.RAIN);
+		var predition = new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.RAIN);
 		var resposta = repository.save(predition);
 			
 		assertThat(resposta).isNotNull();
@@ -41,23 +41,23 @@ public class ClimaPredictionRepositoryTest {
 	
 	@Test
 	void mustfindClimaPredictionById() {
-		var predition = repository.save(new ClimaPrediction(
+		var predition = repository.save(new WeatherPrediction(
 										1,
 										PlanetNameEnum.VULCANO,
-										ClimaStatusEnum.RAIN));
+										WeatherStatusEnum.RAIN));
 		
-		var resposta = repository.findById(new ClimaPredictionId(1, PlanetNameEnum.VULCANO)).get();
+		var resposta = repository.findById(new WeatherPredictionId(1, PlanetNameEnum.VULCANO)).get();
 		
 		assertThat(resposta).isNotNull();
 		assertThat(resposta).isEqualTo(predition);
 	}
 	
-	private List<ClimaPrediction> generateList(){
+	private List<WeatherPrediction> generateList(){
 		return Arrays.asList(
-						new ClimaPrediction(1, PlanetNameEnum.VULCANO, ClimaStatusEnum.RAIN),
-						new ClimaPrediction(1, PlanetNameEnum.VULCANO, ClimaStatusEnum.DROUGHT),
-						new ClimaPrediction(1, PlanetNameEnum.VULCANO, ClimaStatusEnum.NONE),
-						new ClimaPrediction(1, PlanetNameEnum.VULCANO, ClimaStatusEnum.OPTIMAL));
+						new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.RAIN),
+						new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.DROUGHT),
+						new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.NONE),
+						new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.OPTIMAL));
 	}
 	
 	

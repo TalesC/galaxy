@@ -12,19 +12,19 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import br.com.meli.galaxy.dto.ClimaPredictioDTO;
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.dto.WeatherPredictioDTO;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaPredictionService;
+import br.com.meli.galaxy.service.WeatherPredictionService;
 
-@WebMvcTest(ClimaPredictionController.class)
-public class ClimaPredictionControllerTest {
+@WebMvcTest(WeatherPredictionController.class)
+public class WeatherPredictionControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
-	private ClimaPredictionService service;
+	private WeatherPredictionService service;
 	
 	@Test
 	void mustReturnStatus200OKWhenSearchByFerengeDays() throws Exception {
@@ -98,8 +98,8 @@ public class ClimaPredictionControllerTest {
 		   .andExpect(MockMvcResultMatchers.status().isNotFound());
 	}
 	
-	private ClimaPredictioDTO getClimaPrediction(PlanetNameEnum planet) {
-		return new ClimaPredictioDTO(1, ClimaStatusEnum.DROUGHT);
+	private WeatherPredictioDTO getClimaPrediction(PlanetNameEnum planet) {
+		return new WeatherPredictioDTO(1, WeatherStatusEnum.DROUGHT);
 	}
 	
 }

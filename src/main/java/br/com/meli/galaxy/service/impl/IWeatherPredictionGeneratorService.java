@@ -7,18 +7,18 @@ import org.springframework.stereotype.Service;
 
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaPredictionGeneratorService;
+import br.com.meli.galaxy.service.WeatherPredictionGeneratorService;
 import br.com.meli.galaxy.utils.MatrixUtils;
 import br.com.meli.galaxy.utils.TriangleUtils;
 
 @Service
-public class IClimaPredictionGeneratorService implements ClimaPredictionGeneratorService {
+public class IWeatherPredictionGeneratorService implements WeatherPredictionGeneratorService {
 
 	@Override
-	public List<ClimaPrediction> predict(Integer years, PlanetNameEnum planetName) {
+	public List<WeatherPrediction> predict(Integer years, PlanetNameEnum planetName) {
 		var solarSystem = this.createSolarSystem();
 		var days = solarSystem.findPlanet(planetName).getDaysByYear(years);
 		
@@ -28,13 +28,13 @@ public class IClimaPredictionGeneratorService implements ClimaPredictionGenerato
 	}
 	
 
-	private List<ClimaPrediction> predict(Integer days,SimpleSolarSystem solarSystem,
+	private List<WeatherPrediction> predict(Integer days,SimpleSolarSystem solarSystem,
 										  PlanetNameEnum planetName) {
 		
-		var predictionsOfAPlanet = new ArrayList<ClimaPrediction>();
+		var predictionsOfAPlanet = new ArrayList<WeatherPrediction>();
 		
 		for(int day=0; day < days; day++) {
-			predictionsOfAPlanet.add(new ClimaPrediction(
+			predictionsOfAPlanet.add(new WeatherPrediction(
 										day,
 										planetName,
 										verifyClima(day, solarSystem)));
@@ -43,14 +43,14 @@ public class IClimaPredictionGeneratorService implements ClimaPredictionGenerato
 	}
 
 
-	private ClimaStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
-		var clima = ClimaStatusEnum.NONE;
+	private WeatherStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
+		var clima = WeatherStatusEnum.NONE;
 		
-		if(planetsMakesTriangleWithSunInside(day, solarSystem)) clima = ClimaStatusEnum.RAIN;
+		if(planetsMakesTriangleWithSunInside(day, solarSystem)) clima = WeatherStatusEnum.RAIN;
 		else
-			if(planetsAlignWithSun(day, solarSystem)) clima = ClimaStatusEnum.DROUGHT;
+			if(planetsAlignWithSun(day, solarSystem)) clima = WeatherStatusEnum.DROUGHT;
 			else
-				if(planetsAlignWithoutSun(day, solarSystem)) clima = ClimaStatusEnum.OPTIMAL;
+				if(planetsAlignWithoutSun(day, solarSystem)) clima = WeatherStatusEnum.OPTIMAL;
 		
 		return clima;
 	}

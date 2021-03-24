@@ -11,18 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 @SpringBootTest
-public class ClimaReportServiceTest {
+public class WeatherReportServiceTest {
 	
 	@MockBean
-	private ClimaPredictionGeneratorService predictionService;
+	private WeatherPredictionGeneratorService predictionService;
 	
 	@Autowired
-	private ClimaReportService service;
+	private WeatherReportService service;
 	
 	@Test
 	void mustGenerateAReportByPeriodOfFerenge() {
@@ -51,13 +51,13 @@ public class ClimaReportServiceTest {
 		assertThat(report.getOptimalClimaPeriod().equals(2));
 	}
 	
-	private List<ClimaPrediction> generatePredictionList(PlanetNameEnum planet){
+	private List<WeatherPrediction> generatePredictionList(PlanetNameEnum planet){
 		return Arrays.asList(
-				new ClimaPrediction(1, planet, ClimaStatusEnum.OPTIMAL),
-				new ClimaPrediction(2, planet, ClimaStatusEnum.DROUGHT),
-				new ClimaPrediction(3, planet, ClimaStatusEnum.OPTIMAL),
-				new ClimaPrediction(4, planet, ClimaStatusEnum.RAIN),
-				new ClimaPrediction(5, planet, ClimaStatusEnum.NONE));
+				new WeatherPrediction(1, planet, WeatherStatusEnum.OPTIMAL),
+				new WeatherPrediction(2, planet, WeatherStatusEnum.DROUGHT),
+				new WeatherPrediction(3, planet, WeatherStatusEnum.OPTIMAL),
+				new WeatherPrediction(4, planet, WeatherStatusEnum.RAIN),
+				new WeatherPrediction(5, planet, WeatherStatusEnum.NONE));
 	}
 
 }

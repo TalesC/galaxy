@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.impl.IClimaPredictionGeneratorService;
+import br.com.meli.galaxy.service.impl.IWeatherPredictionGeneratorService;
 
-public class ClimaPredictionGeneratorServiceTest {
+public class WeatherPredictionGeneratorServiceTest {
 
-	private ClimaPredictionGeneratorService service = new IClimaPredictionGeneratorService();
+	private WeatherPredictionGeneratorService service = new IWeatherPredictionGeneratorService();
 	
 	@Test
 	void mustPredictClimaBy10VULCANOYears() {
@@ -38,16 +38,16 @@ public class ClimaPredictionGeneratorServiceTest {
 		assertThat(getAnyPredition(predictions)).isNotNull();
 	}
 	
-	private ClimaPrediction getAnyPredition(List<ClimaPrediction> predictions) {
+	private WeatherPrediction getAnyPredition(List<WeatherPrediction> predictions) {
 		var rain = predictions.stream()
 						.filter(prediction -> verifyStatus(prediction))
 						.findAny().orElse(null);
 		return rain;
 	}
 	
-	private boolean verifyStatus(ClimaPrediction prediction) {
-		return prediction.getClima().equals(ClimaStatusEnum.RAIN) ||
-				prediction.getClima().equals(ClimaStatusEnum.DROUGHT) ||
-				prediction.getClima().equals(ClimaStatusEnum.OPTIMAL);
+	private boolean verifyStatus(WeatherPrediction prediction) {
+		return prediction.getClima().equals(WeatherStatusEnum.RAIN) ||
+				prediction.getClima().equals(WeatherStatusEnum.DROUGHT) ||
+				prediction.getClima().equals(WeatherStatusEnum.OPTIMAL);
 	}
 }

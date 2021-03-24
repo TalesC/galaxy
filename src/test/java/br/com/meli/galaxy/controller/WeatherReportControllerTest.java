@@ -12,18 +12,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import br.com.meli.galaxy.dto.ClimaReportDTO;
+import br.com.meli.galaxy.dto.WeatherReportDTO;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaReportService;
+import br.com.meli.galaxy.service.WeatherReportService;
 
-@WebMvcTest(ClimaReportController.class)
-public class ClimaReportControllerTest {
+@WebMvcTest(WeatherReportController.class)
+public class WeatherReportControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
-	private ClimaReportService service;
+	private WeatherReportService service;
 	
 	@Test
 	void mustReturnStatus200OKWhenGenerateReportByFerengeYears() throws Exception {
@@ -73,7 +73,7 @@ public class ClimaReportControllerTest {
 		   .andExpect(MockMvcResultMatchers.status().isBadRequest());
 	}
 
-	private ClimaReportDTO getReport(PlanetNameEnum planet) {
-		return new ClimaReportDTO(10, 11, 20, planet);
+	private WeatherReportDTO getReport(PlanetNameEnum planet) {
+		return new WeatherReportDTO(10, 11, 20, planet);
 	}
 }

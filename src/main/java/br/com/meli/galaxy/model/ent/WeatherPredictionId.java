@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
-public class ClimaPredictionId implements Serializable {
+public class WeatherPredictionId implements Serializable {
 
 	private static final long serialVersionUID = -756299426410402865L;
 	
@@ -12,11 +12,11 @@ public class ClimaPredictionId implements Serializable {
 	private PlanetNameEnum planet;
 	
 	
-	public ClimaPredictionId() {
+	public WeatherPredictionId() {
 		super();
 	}
 
-	public ClimaPredictionId(Integer day, PlanetNameEnum planet) {
+	public WeatherPredictionId(Integer day, PlanetNameEnum planet) {
 		super();
 		this.day = day;
 		this.planet = planet;
@@ -38,7 +38,7 @@ public class ClimaPredictionId implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ClimaPredictionId other = (ClimaPredictionId) obj;
+		WeatherPredictionId other = (WeatherPredictionId) obj;
 		if (day == null) {
 			if (other.day != null)
 				return false;

@@ -4,25 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 @Entity
-@IdClass(ClimaPredictionId.class)
-public class ClimaPrediction {
+@IdClass(WeatherPredictionId.class)
+public class WeatherPrediction {
 	
 	@Id
 	private Integer day;
 	@Id
 	private PlanetNameEnum planet;
 	
-	private ClimaStatusEnum clima;
+	private WeatherStatusEnum clima;
 	
-	public ClimaPrediction() {
+	public WeatherPrediction() {
 		super();
 	}
 
-	public ClimaPrediction(Integer day, PlanetNameEnum planet, ClimaStatusEnum clima) {
+	public WeatherPrediction(Integer day, PlanetNameEnum planet, WeatherStatusEnum clima) {
 		super();
 		this.day = day;
 		this.planet = planet;
@@ -45,11 +45,11 @@ public class ClimaPrediction {
 		this.planet = planet;
 	}
 
-	public ClimaStatusEnum getClima() {
+	public WeatherStatusEnum getClima() {
 		return clima;
 	}
 
-	public void setClima(ClimaStatusEnum clima) {
+	public void setClima(WeatherStatusEnum clima) {
 		this.clima = clima;
 	}
 
@@ -70,7 +70,7 @@ public class ClimaPrediction {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ClimaPrediction other = (ClimaPrediction) obj;
+		WeatherPrediction other = (WeatherPrediction) obj;
 		if (day == null) {
 			if (other.day != null)
 				return false;

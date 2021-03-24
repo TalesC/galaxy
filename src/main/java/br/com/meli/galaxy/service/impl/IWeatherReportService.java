@@ -3,22 +3,22 @@ package br.com.meli.galaxy.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.meli.galaxy.dto.ClimaReportDTO;
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
+import br.com.meli.galaxy.dto.WeatherReportDTO;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.service.ClimaPredictionGeneratorService;
-import br.com.meli.galaxy.service.ClimaReportService;
+import br.com.meli.galaxy.service.WeatherPredictionGeneratorService;
+import br.com.meli.galaxy.service.WeatherReportService;
 
 @Service
-public class IClimaReportService implements ClimaReportService {
+public class IWeatherReportService implements WeatherReportService {
 	
 	@Autowired
-	private ClimaPredictionGeneratorService predictionService;
+	private WeatherPredictionGeneratorService predictionService;
 
 	@Override
-	public ClimaReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
+	public WeatherReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
 		
-		var report = new ClimaReportDTO(0, 0, 0, planetName);
+		var report = new WeatherReportDTO(0, 0, 0, planetName);
 		var predictions = predictionService.predict(year, planetName);
 		
 		predictions.forEach(prediction -> {
@@ -28,7 +28,7 @@ public class IClimaReportService implements ClimaReportService {
 		return report;
 	}
 
-	private void verifyPrediction(ClimaReportDTO report, ClimaPrediction prediction) {
+	private void verifyPrediction(WeatherReportDTO report, WeatherPrediction prediction) {
 		switch (prediction.getClima()) {
 		case DROUGHT: report.setDroughtPeriods(report.getDroughtPeriods() + 1);
 			break;

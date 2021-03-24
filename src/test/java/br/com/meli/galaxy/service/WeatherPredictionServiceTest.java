@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 @SpringBootTest
-public class ClimaPredictionServiceTest {
+public class WeatherPredictionServiceTest {
 
 	@Autowired
-	private ClimaPredictionService service;
+	private WeatherPredictionService service;
 	
 	@Test
 	void mustFindPredictionByDayOfPlanet() {
@@ -21,7 +21,7 @@ public class ClimaPredictionServiceTest {
 		
 		assertThat(prediction).isNotNull();
 		assertThat(prediction.getDay()).isEqualTo(1);
-		assertThat(prediction.getClima()).isEqualTo(ClimaStatusEnum.NONE);
+		assertThat(prediction.getClima()).isEqualTo(WeatherStatusEnum.NONE);
 	}
 	
 	@Test

@@ -12,22 +12,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.meli.galaxy.model.ent.ClimaPrediction;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.repository.ClimaPredictionRepository;
-import br.com.meli.galaxy.service.ClimaPredictionGeneratorService;
+import br.com.meli.galaxy.repository.WeatherPredictionRepository;
+import br.com.meli.galaxy.service.WeatherPredictionGeneratorService;
 
 
 @Component
-public class CreateClimaDatabase {
+public class GenerateWeatherDatabase {
 
-	private static final Logger LOG = LoggerFactory.getLogger(CreateClimaDatabase.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GenerateWeatherDatabase.class);
 	
 	@Autowired
-	private ClimaPredictionGeneratorService service;
+	private WeatherPredictionGeneratorService service;
 	
 	@Autowired
-	private ClimaPredictionRepository repository;
+	private WeatherPredictionRepository repository;
 	
    @PostConstruct
    public void init() {
@@ -42,8 +42,8 @@ public class CreateClimaDatabase {
 	   LOG.info("------------------> Finished Persistence! ");
    }
    
-   private List<ClimaPrediction> generatePredictions() {
-	   var predictions = new ArrayList<ClimaPrediction>();
+   private List<WeatherPrediction> generatePredictions() {
+	   var predictions = new ArrayList<WeatherPrediction>();
 	   
 	   for (PlanetNameEnum planet : PlanetNameEnum.values()) {
 		   predictions.addAll(service.predict(10, planet));
