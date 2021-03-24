@@ -39,9 +39,16 @@ public class ClimaPredictionControllerTest {
 	}
 	
 	@Test
+	void mustReturnStatus404NotFoundWhenSearchByFerengeDays() throws Exception {
+		var uri = new URI("/prediction/ferenge/clima/1000000");
+		verifyStatus4004NotFound(uri);
+	}
+		
+
+	@Test
 	void mustReturnStatus200OKWhenSearchByBetasoidDays() throws Exception {
 		var uri = new URI("/prediction/betasoid/clima/1");
-		verifyStatus200OK(uri,  PlanetNameEnum.FERENGE);
+		verifyStatus200OK(uri,  PlanetNameEnum.BETASOID);
 	}
 	
 	@Test
@@ -51,15 +58,27 @@ public class ClimaPredictionControllerTest {
 	}
 	
 	@Test
+	void mustReturnStatus404NotFoundWhenSearchByBetasoidDays() throws Exception {
+		var uri = new URI("/prediction/betasoid/clima/1000000");
+		verifyStatus4004NotFound(uri);
+	}
+	
+	@Test
 	void mustReturnStatus200OKWhenSearchByVulcanoDays() throws Exception {
 		var uri = new URI("/prediction/vulcano/clima/1");
-		verifyStatus200OK(uri,  PlanetNameEnum.FERENGE);
+		verifyStatus200OK(uri,  PlanetNameEnum.VULCANO);
 	}
 	
 	@Test
 	void mustReturnStatus400BadRequestWhenSearchByVulcanoDays() throws Exception {
 		var uri = new URI("/prediction/vulcano/clima/-1");
 		verifyStatus400BadRequest(uri);
+	}
+	
+	@Test
+	void mustReturnStatus404NotFoundWhenSearchByVulcanoDays() throws Exception {
+		var uri = new URI("/prediction/vulcano/clima/1000000");
+		verifyStatus4004NotFound(uri);
 	}
 
 	private void verifyStatus200OK(URI uri, PlanetNameEnum planet) throws Exception {
@@ -72,6 +91,11 @@ public class ClimaPredictionControllerTest {
 	private void verifyStatus400BadRequest(URI uri) throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 		   .andExpect(MockMvcResultMatchers.status().isBadRequest());
+	}
+	
+	private void verifyStatus4004NotFound(URI uri) throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get(uri))
+		   .andExpect(MockMvcResultMatchers.status().isNotFound());
 	}
 	
 	private ClimaPredictioDTO getClimaPrediction(PlanetNameEnum planet) {

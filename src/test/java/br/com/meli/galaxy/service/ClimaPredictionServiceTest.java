@@ -24,4 +24,11 @@ public class ClimaPredictionServiceTest {
 		assertThat(prediction.getClima()).isEqualTo(ClimaStatusEnum.NONE);
 	}
 	
+	@Test
+	void mustReturnNullIfNotFindPrediction() {
+		var prediction = service.findClimaByDay(100000, PlanetNameEnum.VULCANO);
+		
+		assertThat(prediction).isNull();
+	}
+	
 }

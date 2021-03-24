@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import br.com.meli.galaxy.model.ent.ClimaPrediction;
+import br.com.meli.galaxy.model.ent.ClimaPredictionId;
 import br.com.meli.galaxy.model.enums.ClimaStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.repository.ClimaPredictionRepository;
 
 @DataJpaTest
 public class ClimaPredictionRepositoryTest {
@@ -37,6 +37,19 @@ public class ClimaPredictionRepositoryTest {
 		assertThat(resposta).isNotNull();
 		assertThat(resposta.size() > 0).isTrue();
 		assertThat(resposta).isEqualTo(preditions);
+	}
+	
+	@Test
+	void mustfindClimaPredictionById() {
+		var predition = repository.save(new ClimaPrediction(
+										1,
+										PlanetNameEnum.VULCANO,
+										ClimaStatusEnum.RAIN));
+		
+		var resposta = repository.findById(new ClimaPredictionId(1, PlanetNameEnum.VULCANO)).get();
+		
+		assertThat(resposta).isNotNull();
+		assertThat(resposta).isEqualTo(predition);
 	}
 	
 	private List<ClimaPrediction> generateList(){

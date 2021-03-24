@@ -18,7 +18,9 @@ public class IClimaPredictionService implements ClimaPredictionService {
 	@Override
 	public ClimaPredictioDTO findClimaByDay(Integer day, PlanetNameEnum planetName) {
 		var id = new ClimaPredictionId(day, planetName); 		
-		var prediction = repository.findById(id).get();
+		
+		var prediction = repository.findById(id).orElse(null);
+		if(prediction == null) return null;
 		
 		return new ClimaPredictioDTO(prediction.getDay(), prediction.getClima());
 	}

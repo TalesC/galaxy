@@ -37,6 +37,7 @@ public class ClimaPredictionController {
 		if(day <= 0) return ResponseEntity.badRequest().build();
 		
 		var prediction = service.findClimaByDay(day, planetName);
+		if(prediction == null) return ResponseEntity.notFound().build();
 		
 		return ResponseEntity.ok(prediction);
 	}
