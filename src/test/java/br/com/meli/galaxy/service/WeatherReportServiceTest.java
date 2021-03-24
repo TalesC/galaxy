@@ -43,7 +43,7 @@ public class WeatherReportServiceTest {
 		when(predictionService.findClimaByYear(years, planet))
 		.thenReturn(generatePredictionList(planet));
 	
-		var report = service.generateReport(years, planet);
+		var report = service.generate(years, planet);
 		
 		assertThat(report != null).isTrue();
 		assertThat(report.getDroughtPeriods().equals(1));

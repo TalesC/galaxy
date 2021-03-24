@@ -80,7 +80,7 @@ public class WeatherReportControllerTest {
 	}
 	
 	private void verifyStatus200OK(URI uri, PlanetNameEnum planet) throws Exception {
-		when(service.generateReport(1, planet)).thenReturn(getReport(planet));
+		when(service.generate(1, planet)).thenReturn(getReport(planet));
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 		   .andExpect(MockMvcResultMatchers.status().isOk());

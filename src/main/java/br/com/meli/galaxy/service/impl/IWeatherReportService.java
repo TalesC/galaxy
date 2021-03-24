@@ -16,19 +16,19 @@ public class IWeatherReportService implements WeatherReportService {
 	private WeatherPredictionService predictionService;
 
 	@Override
-	public WeatherReportDTO generateReport(Integer year, PlanetNameEnum planetName) {
+	public WeatherReportDTO generate(Integer year, PlanetNameEnum planetName) {
 		
 		var report = new WeatherReportDTO(0, 0, 0, planetName);
 		var predictions = predictionService.findClimaByYear(year, planetName);
 		
 		predictions.forEach(prediction -> {
-			verifyPrediction(report, prediction);
+			verifyWeather(report, prediction);
 		});
 		
 		return report;
 	}
 
-	private void verifyPrediction(WeatherReportDTO report, WeatherPredictionDTO prediction) {
+	private void verifyWeather(WeatherReportDTO report, WeatherPredictionDTO prediction) {
 		switch (prediction.getClima()) {
 		case DROUGHT: report.setDroughtPeriods(report.getDroughtPeriods() + 1);
 			break;

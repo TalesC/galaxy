@@ -5,6 +5,6 @@ import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public interface WeatherReportService {
 
-	WeatherReportDTO generateReport(Integer year, PlanetNameEnum planetName);
+	WeatherReportDTO generate(Integer year, PlanetNameEnum planetName);
 
 }
