@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import br.com.meli.galaxy.dto.WeatherPredictioDTO;
+import br.com.meli.galaxy.dto.WeatherPredictionDTO;
 import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.service.WeatherPredictionService;
@@ -98,8 +98,8 @@ public class WeatherPredictionControllerTest {
 		   .andExpect(MockMvcResultMatchers.status().isNotFound());
 	}
 	
-	private WeatherPredictioDTO getClimaPrediction(PlanetNameEnum planet) {
-		return new WeatherPredictioDTO(1, WeatherStatusEnum.DROUGHT);
+	private WeatherPredictionDTO getClimaPrediction(PlanetNameEnum planet) {
+		return new WeatherPredictionDTO(1, WeatherStatusEnum.DROUGHT);
 	}
 	
 }

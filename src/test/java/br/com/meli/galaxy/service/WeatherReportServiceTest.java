@@ -11,15 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import br.com.meli.galaxy.model.ent.WeatherPrediction;
-import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
+import br.com.meli.galaxy.dto.WeatherPredictionDTO;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
+import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 
 @SpringBootTest
 public class WeatherReportServiceTest {
 	
 	@MockBean
-	private WeatherPredictionGeneratorService predictionService;
+	private WeatherPredictionService predictionService;
 	
 	@Autowired
 	private WeatherReportService service;
@@ -40,7 +40,7 @@ public class WeatherReportServiceTest {
 	}
 	
 	private void generateReport(Integer years, PlanetNameEnum planet) {
-		when(predictionService.predict(years, planet))
+		when(predictionService.findClimaByYear(years, planet))
 		.thenReturn(generatePredictionList(planet));
 	
 		var report = service.generateReport(years, planet);
@@ -51,13 +51,13 @@ public class WeatherReportServiceTest {
 		assertThat(report.getOptimalClimaPeriod().equals(2));
 	}
 	
-	private List<WeatherPrediction> generatePredictionList(PlanetNameEnum planet){
+	private List<WeatherPredictionDTO> generatePredictionList(PlanetNameEnum planet){
 		return Arrays.asList(
-				new WeatherPrediction(1, planet, WeatherStatusEnum.OPTIMAL),
-				new WeatherPrediction(2, planet, WeatherStatusEnum.DROUGHT),
-				new WeatherPrediction(3, planet, WeatherStatusEnum.OPTIMAL),
-				new WeatherPrediction(4, planet, WeatherStatusEnum.RAIN),
-				new WeatherPrediction(5, planet, WeatherStatusEnum.NONE));
+				new WeatherPredictionDTO(1, WeatherStatusEnum.OPTIMAL),
+				new WeatherPredictionDTO(2, WeatherStatusEnum.DROUGHT),
+				new WeatherPredictionDTO(3, WeatherStatusEnum.OPTIMAL),
+				new WeatherPredictionDTO(4, WeatherStatusEnum.RAIN),
+				new WeatherPredictionDTO(5, WeatherStatusEnum.NONE));
 	}
 
 }

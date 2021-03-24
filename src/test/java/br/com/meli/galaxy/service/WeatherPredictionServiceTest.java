@@ -31,4 +31,21 @@ public class WeatherPredictionServiceTest {
 		assertThat(prediction).isNull();
 	}
 	
+	@Test
+	void mustFindPredictionByYearOfPlanet() {
+		var predictions = service.findClimaByYear(10, PlanetNameEnum.VULCANO);
+		
+		assertThat(predictions).isNotNull();
+		assertThat(predictions).isNotEmpty();
+		assertThat(predictions.size() > 0).isTrue();
+	}
+	
+	@Test
+	void mustRetrunEmptyWhenPredictByYearOfPlanet() {
+		var predictions = service.findClimaByYear(0, PlanetNameEnum.VULCANO);
+		
+		assertThat(predictions).isNotNull();
+		assertThat(predictions).isEmpty();;
+	}
+	
 }

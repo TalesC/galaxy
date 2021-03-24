@@ -1,9 +1,16 @@
 package br.com.meli.galaxy.service.impl;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.meli.galaxy.dto.WeatherPredictioDTO;
+import br.com.meli.galaxy.dto.WeatherPredictionDTO;
+import br.com.meli.galaxy.model.SimpleSolarSystem;
+import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
+import br.com.meli.galaxy.model.ent.WeatherPrediction;
 import br.com.meli.galaxy.model.ent.WeatherPredictionId;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.repository.WeatherPredictionRepository;
@@ -16,13 +23,35 @@ public class IWeatherPredictionService implements WeatherPredictionService {
 	private WeatherPredictionRepository repository;
 	
 	@Override
-	public WeatherPredictioDTO findClimaByDay(Integer day, PlanetNameEnum planetName) {
+	public WeatherPredictionDTO findClimaByDay(Integer day, PlanetNameEnum planetName) {
 		var id = new WeatherPredictionId(day, planetName); 		
 		
 		var prediction = repository.findById(id).orElse(null);
 		if(prediction == null) return null;
 		
-		return new WeatherPredictioDTO(prediction.getDay(), prediction.getClima());
+		return new WeatherPredictionDTO(prediction.getDay(), prediction.getClima());
+	}
+
+	@Override
+	public List<WeatherPredictionDTO> findClimaByYear(Integer years, PlanetNameEnum planetName) {
+		var solarSystem = this.createSolarSystem();
+		var days = solarSystem.findPlanet(planetName).getDaysByYear(years);
+		
+		var predictions = repository.findByPlanet(planetName)
+									.stream()
+									.filter(prediction -> prediction.getDay() <= days)
+									.sorted(Comparator.comparing(WeatherPrediction::getDay))
+									.map(prediction -> new WeatherPredictionDTO(prediction.getDay(), prediction.getClima()))
+									.collect(Collectors.toList());
+		
+		return predictions;
+	}
+	
+	private SimpleSolarSystem createSolarSystem() {
+		return new SimpleSolarSystemBuilder()
+							.planets()
+							.sun()
+							.build();
 	}
 	
 		

@@ -23,20 +23,20 @@ public class WeatherPredictionRepositoryTest {
 	@Test
 	void mustSaveClimaPrediction() {
 		var predition = new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.RAIN);
-		var resposta = repository.save(predition);
+		var returned = repository.save(predition);
 			
-		assertThat(resposta).isNotNull();
-		assertThat(resposta).isEqualTo(predition);
+		assertThat(returned).isNotNull();
+		assertThat(returned).isEqualTo(predition);
 	}
 	
 	@Test
 	void mustSaveListOfClimaPrediction() {
 		var preditions = generateList();
-		var resposta = repository.saveAll(preditions);
+		var returned = repository.saveAll(preditions);
 			
-		assertThat(resposta).isNotNull();
-		assertThat(resposta.size() > 0).isTrue();
-		assertThat(resposta).isEqualTo(preditions);
+		assertThat(returned).isNotNull();
+		assertThat(returned.size() > 0).isTrue();
+		assertThat(returned).isEqualTo(preditions);
 	}
 	
 	@Test
@@ -46,10 +46,10 @@ public class WeatherPredictionRepositoryTest {
 										PlanetNameEnum.VULCANO,
 										WeatherStatusEnum.RAIN));
 		
-		var resposta = repository.findById(new WeatherPredictionId(1, PlanetNameEnum.VULCANO)).get();
+		var returned = repository.findById(new WeatherPredictionId(1, PlanetNameEnum.VULCANO)).get();
 		
-		assertThat(resposta).isNotNull();
-		assertThat(resposta).isEqualTo(predition);
+		assertThat(returned).isNotNull();
+		assertThat(returned).isEqualTo(predition);
 	}
 	
 	private List<WeatherPrediction> generateList(){

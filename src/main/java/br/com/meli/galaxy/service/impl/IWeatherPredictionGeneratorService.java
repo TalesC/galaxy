@@ -33,7 +33,7 @@ public class IWeatherPredictionGeneratorService implements WeatherPredictionGene
 		
 		var predictionsOfAPlanet = new ArrayList<WeatherPrediction>();
 		
-		for(int day=0; day < days; day++) {
+		for(int day = 1; day <= days; day++) {
 			predictionsOfAPlanet.add(new WeatherPrediction(
 										day,
 										planetName,
