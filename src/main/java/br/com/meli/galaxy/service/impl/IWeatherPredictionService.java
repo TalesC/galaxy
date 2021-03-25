@@ -29,7 +29,7 @@ public class IWeatherPredictionService implements WeatherPredictionService {
 		var prediction = repository.findById(id).orElse(null);
 		if(prediction == null) return null;
 		
-		return new WeatherPredictionDTO(prediction.getDay(), prediction.getClima());
+		return new WeatherPredictionDTO(prediction.getDay(), prediction.getWeather());
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class IWeatherPredictionService implements WeatherPredictionService {
 									.stream()
 									.filter(prediction -> prediction.getDay() <= days)
 									.sorted(Comparator.comparing(WeatherPrediction::getDay))
-									.map(prediction -> new WeatherPredictionDTO(prediction.getDay(), prediction.getClima()))
+									.map(prediction -> new WeatherPredictionDTO(prediction.getDay(), prediction.getWeather()))
 									.collect(Collectors.toList());
 		
 		return predictions;

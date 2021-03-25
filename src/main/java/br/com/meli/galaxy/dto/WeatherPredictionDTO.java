@@ -5,20 +5,20 @@ import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 public class WeatherPredictionDTO {
 	
 	private Integer day;
-	private WeatherStatusEnum clima;
+	private WeatherStatusEnum weather;
 	
-	public WeatherPredictionDTO(Integer day, WeatherStatusEnum clima) {
+	public WeatherPredictionDTO(Integer day, WeatherStatusEnum weather) {
 		super();
 		this.day = day;
-		this.clima = clima;
+		this.weather = weather;
 	}
 
 	public Integer getDay() {
 		return day;
 	}
 
-	public WeatherStatusEnum getClima() {
-		return clima;
+	public WeatherStatusEnum getWeather() {
+		return weather;
 	}
 
 }

@@ -46,8 +46,8 @@ public class WeatherPredictionGeneratorServiceTest {
 	}
 	
 	private boolean verifyStatus(WeatherPrediction prediction) {
-		return prediction.getClima().equals(WeatherStatusEnum.RAIN) ||
-				prediction.getClima().equals(WeatherStatusEnum.DROUGHT) ||
-				prediction.getClima().equals(WeatherStatusEnum.OPTIMAL);
+		return prediction.getWeather().equals(WeatherStatusEnum.RAIN) ||
+				prediction.getWeather().equals(WeatherStatusEnum.DROUGHT) ||
+				prediction.getWeather().equals(WeatherStatusEnum.OPTIMAL);
 	}
 }

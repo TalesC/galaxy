@@ -46,9 +46,9 @@ public class WeatherReportServiceTest {
 		var report = service.generate(years, planet);
 		
 		assertThat(report != null).isTrue();
-		assertThat(report.getDroughtPeriods().equals(1));
-		assertThat(report.getRainPeriods().equals(1));
-		assertThat(report.getOptimalClimaPeriod().equals(2));
+		assertThat(report.getDroughtDays().equals(1));
+		assertThat(report.getRainDays().equals(1));
+		assertThat(report.getOptimalDays().equals(2));
 	}
 	
 	private List<WeatherPredictionDTO> generatePredictionList(PlanetNameEnum planet){

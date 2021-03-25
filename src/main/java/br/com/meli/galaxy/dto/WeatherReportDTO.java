@@ -4,50 +4,49 @@ import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public class WeatherReportDTO {
 	
-	private Integer droughtPeriods;
-	private Integer rainPeriods;
-	private Integer optimalClimaPeriod;
-	private PlanetNameEnum basedOnYearsOf;
+	private Integer droughtDays;
+	private Integer rainDays;
+	private Integer optimalDays;
+	private PlanetNameEnum onPlanet;
 	
-	public WeatherReportDTO(Integer droughtPeriods, Integer rainPeriods, Integer optimalClimaPeriod,
-			PlanetNameEnum basedOnYearsOf) {
+	public WeatherReportDTO(Integer droughtDays, Integer rainDays, Integer optimalDays, PlanetNameEnum onPlanet) {
 		super();
-		this.droughtPeriods = droughtPeriods;
-		this.rainPeriods = rainPeriods;
-		this.optimalClimaPeriod = optimalClimaPeriod;
-		this.basedOnYearsOf = basedOnYearsOf;
+		this.droughtDays = droughtDays;
+		this.rainDays = rainDays;
+		this.optimalDays = optimalDays;
+		this.onPlanet = onPlanet;
 	}
 
-	public Integer getDroughtPeriods() {
-		return droughtPeriods;
+	public Integer getDroughtDays() {
+		return droughtDays;
 	}
 
-	public Integer getRainPeriods() {
-		return rainPeriods;
+	public void setDroughtDays(Integer droughtDays) {
+		this.droughtDays = droughtDays;
 	}
 
-	public Integer getOptimalClimaPeriod() {
-		return optimalClimaPeriod;
+	public Integer getRainDays() {
+		return rainDays;
 	}
 
-	public PlanetNameEnum getBasedOnYearsOf() {
-		return basedOnYearsOf;
+	public void setRainDays(Integer rainDays) {
+		this.rainDays = rainDays;
 	}
 
-	public void setDroughtPeriods(Integer droughtPeriods) {
-		this.droughtPeriods = droughtPeriods;
+	public Integer getOptimalDays() {
+		return optimalDays;
 	}
 
-	public void setRainPeriods(Integer rainPeriods) {
-		this.rainPeriods = rainPeriods;
+	public void setOptimalDays(Integer optimalDays) {
+		this.optimalDays = optimalDays;
 	}
 
-	public void setOptimalClimaPeriod(Integer optimalClimaPeriod) {
-		this.optimalClimaPeriod = optimalClimaPeriod;
+	public PlanetNameEnum getOnPlanet() {
+		return onPlanet;
 	}
 
-	public void setBasedOnYearsOf(PlanetNameEnum basedOnYearsOf) {
-		this.basedOnYearsOf = basedOnYearsOf;
+	public void setOnPlanet(PlanetNameEnum onPlanet) {
+		this.onPlanet = onPlanet;
 	}
 	
 }

@@ -29,12 +29,12 @@ public class IWeatherReportService implements WeatherReportService {
 	}
 
 	private void verifyWeather(WeatherReportDTO report, WeatherPredictionDTO prediction) {
-		switch (prediction.getClima()) {
-		case DROUGHT: report.setDroughtPeriods(report.getDroughtPeriods() + 1);
+		switch (prediction.getWeather()) {
+		case DROUGHT: report.setDroughtDays(report.getDroughtDays() + 1);
 			break;
-		case RAIN: report.setRainPeriods(report.getRainPeriods() + 1);
+		case RAIN: report.setRainDays(report.getRainDays() + 1);
 			break;
-		case OPTIMAL: report.setOptimalClimaPeriod(report.getOptimalClimaPeriod() + 1);
+		case OPTIMAL: report.setOptimalDays(report.getOptimalDays() + 1);
 			break;
 		default:
 			break;

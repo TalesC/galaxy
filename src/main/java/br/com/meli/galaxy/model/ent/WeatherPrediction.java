@@ -16,17 +16,19 @@ public class WeatherPrediction {
 	@Id
 	private PlanetNameEnum planet;
 	
-	private WeatherStatusEnum clima;
+	private WeatherStatusEnum weather;
 	
 	public WeatherPrediction() {
 		super();
 	}
 
-	public WeatherPrediction(Integer day, PlanetNameEnum planet, WeatherStatusEnum clima) {
+	
+
+	public WeatherPrediction(Integer day, PlanetNameEnum planet, WeatherStatusEnum weather) {
 		super();
 		this.day = day;
 		this.planet = planet;
-		this.clima = clima;
+		this.weather = weather;
 	}
 
 	public Integer getDay() {
@@ -45,12 +47,12 @@ public class WeatherPrediction {
 		this.planet = planet;
 	}
 
-	public WeatherStatusEnum getClima() {
-		return clima;
+	public WeatherStatusEnum getWeather() {
+		return weather;
 	}
 
-	public void setClima(WeatherStatusEnum clima) {
-		this.clima = clima;
+	public void setWeather(WeatherStatusEnum weather) {
+		this.weather = weather;
 	}
 
 	@Override
