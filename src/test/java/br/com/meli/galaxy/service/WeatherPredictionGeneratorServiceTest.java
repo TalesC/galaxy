@@ -16,17 +16,17 @@ public class WeatherPredictionGeneratorServiceTest {
 	private WeatherPredictionGeneratorService service = new IWeatherPredictionGeneratorService();
 	
 	@Test
-	void mustPredictClimaBy10VULCANOYears() {
+	void mustPredictWeatherBy10VULCANOYears() {
 		predict(10, PlanetNameEnum.VULCANO);
 	}
 	
 	@Test
-	void mustPredictClimaBy10BETASOIDYears() {
+	void mustPredictWeatherBy10BETASOIDYears() {
 		predict(10, PlanetNameEnum.BETASOID);
 	}
 	
 	@Test
-	void mustPredictClimaBy10FERENGEYears() {
+	void mustPredictWeatherBy10FERENGEYears() {
 		predict(10, PlanetNameEnum.FERENGE);
 	}
 	

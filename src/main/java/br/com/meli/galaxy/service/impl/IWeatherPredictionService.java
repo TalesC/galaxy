@@ -23,7 +23,7 @@ public class IWeatherPredictionService implements WeatherPredictionService {
 	private WeatherPredictionRepository repository;
 	
 	@Override
-	public WeatherPredictionDTO findClimaByDay(Integer day, PlanetNameEnum planetName) {
+	public WeatherPredictionDTO findWeatherByDay(Integer day, PlanetNameEnum planetName) {
 		var id = new WeatherPredictionId(day, planetName); 		
 		
 		var prediction = repository.findById(id).orElse(null);
@@ -33,7 +33,7 @@ public class IWeatherPredictionService implements WeatherPredictionService {
 	}
 
 	@Override
-	public List<WeatherPredictionDTO> findClimaByYear(Integer years, PlanetNameEnum planetName) {
+	public List<WeatherPredictionDTO> findWeatherByYear(Integer years, PlanetNameEnum planetName) {
 		var solarSystem = this.createSolarSystem();
 		var days = solarSystem.findPlanet(planetName).getDaysByYear(years);
 		

@@ -7,8 +7,8 @@ import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public interface WeatherPredictionService {
 
-	WeatherPredictionDTO findClimaByDay(Integer day, PlanetNameEnum planetName);
+	WeatherPredictionDTO findWeatherByDay(Integer day, PlanetNameEnum planetName);
 
-	List<WeatherPredictionDTO> findClimaByYear(Integer year, PlanetNameEnum planetName);
+	List<WeatherPredictionDTO> findWeatherByYear(Integer year, PlanetNameEnum planetName);
 
 }

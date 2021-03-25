@@ -17,7 +17,7 @@ public class WeatherPredictionServiceTest {
 	
 	@Test
 	void mustFindPredictionByDayOfPlanet() {
-		var prediction = service.findClimaByDay(1, PlanetNameEnum.VULCANO);
+		var prediction = service.findWeatherByDay(1, PlanetNameEnum.VULCANO);
 		
 		assertThat(prediction).isNotNull();
 		assertThat(prediction.getDay()).isEqualTo(1);
@@ -26,14 +26,14 @@ public class WeatherPredictionServiceTest {
 	
 	@Test
 	void mustReturnNullIfNotFindPrediction() {
-		var prediction = service.findClimaByDay(100000, PlanetNameEnum.VULCANO);
+		var prediction = service.findWeatherByDay(100000, PlanetNameEnum.VULCANO);
 		
 		assertThat(prediction).isNull();
 	}
 	
 	@Test
 	void mustFindPredictionByYearOfPlanet() {
-		var predictions = service.findClimaByYear(10, PlanetNameEnum.VULCANO);
+		var predictions = service.findWeatherByYear(10, PlanetNameEnum.VULCANO);
 		
 		assertThat(predictions).isNotNull();
 		assertThat(predictions).isNotEmpty();
@@ -42,7 +42,7 @@ public class WeatherPredictionServiceTest {
 	
 	@Test
 	void mustRetrunEmptyWhenPredictByYearOfPlanet() {
-		var predictions = service.findClimaByYear(0, PlanetNameEnum.VULCANO);
+		var predictions = service.findWeatherByYear(0, PlanetNameEnum.VULCANO);
 		
 		assertThat(predictions).isNotNull();
 		assertThat(predictions).isEmpty();;

@@ -40,7 +40,7 @@ public class WeatherReportServiceTest {
 	}
 	
 	private void generateReport(Integer years, PlanetNameEnum planet) {
-		when(predictionService.findClimaByYear(years, planet))
+		when(predictionService.findWeatherByYear(years, planet))
 		.thenReturn(generatePredictionList(planet));
 	
 		var report = service.generate(years, planet);

@@ -37,13 +37,13 @@ public class IWeatherPredictionGeneratorService implements WeatherPredictionGene
 			predictionsOfAPlanet.add(new WeatherPrediction(
 										day,
 										planetName,
-										verifyClima(day, solarSystem)));
+										verifyWeather(day, solarSystem)));
 		}		
 		return predictionsOfAPlanet;
 	}
 
 
-	private WeatherStatusEnum verifyClima(int day, SimpleSolarSystem solarSystem) {
+	private WeatherStatusEnum verifyWeather(int day, SimpleSolarSystem solarSystem) {
 		var clima = WeatherStatusEnum.NONE;
 		
 		if(planetsMakesTriangleWithSunInside(day, solarSystem)) clima = WeatherStatusEnum.RAIN;

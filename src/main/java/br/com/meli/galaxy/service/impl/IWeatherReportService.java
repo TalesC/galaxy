@@ -19,7 +19,7 @@ public class IWeatherReportService implements WeatherReportService {
 	public WeatherReportDTO generate(Integer year, PlanetNameEnum planetName) {
 		
 		var report = new WeatherReportDTO(0, 0, 0, planetName);
-		var predictions = predictionService.findClimaByYear(year, planetName);
+		var predictions = predictionService.findWeatherByYear(year, planetName);
 		
 		predictions.forEach(prediction -> {
 			verifyWeather(report, prediction);

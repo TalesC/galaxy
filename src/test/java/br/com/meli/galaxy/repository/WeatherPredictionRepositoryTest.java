@@ -21,7 +21,7 @@ public class WeatherPredictionRepositoryTest {
 	private WeatherPredictionRepository repository;
 
 	@Test
-	void mustSaveClimaPrediction() {
+	void mustSaveWeatherPrediction() {
 		var predition = new WeatherPrediction(1, PlanetNameEnum.VULCANO, WeatherStatusEnum.RAIN);
 		var returned = repository.save(predition);
 			
@@ -30,7 +30,7 @@ public class WeatherPredictionRepositoryTest {
 	}
 	
 	@Test
-	void mustSaveListOfClimaPrediction() {
+	void mustSaveListOfWeatherPrediction() {
 		var preditions = generateList();
 		var returned = repository.saveAll(preditions);
 			
@@ -40,7 +40,7 @@ public class WeatherPredictionRepositoryTest {
 	}
 	
 	@Test
-	void mustfindClimaPredictionById() {
+	void mustfindWeatherPredictionById() {
 		var predition = repository.save(new WeatherPrediction(
 										1,
 										PlanetNameEnum.VULCANO,

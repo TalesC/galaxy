@@ -18,25 +18,25 @@ public class WeatherPredictionController {
 	@Autowired
 	private WeatherPredictionService service;
 	
-	@GetMapping("/vulcano/clima/{day}")
+	@GetMapping("/vulcano/weather/{day}")
 	public ResponseEntity<WeatherPredictionDTO> findByDayOfVulcano(@PathVariable("day") Integer day) {
-		return findClimaByDay(day, PlanetNameEnum.VULCANO);
+		return findWeatherByDay(day, PlanetNameEnum.VULCANO);
 	}
 	
-	@GetMapping("/ferenge/clima/{day}")
+	@GetMapping("/ferenge/weather/{day}")
 	public ResponseEntity<WeatherPredictionDTO> findByDayOfFerenge(@PathVariable("day") Integer day) {
-		return findClimaByDay(day, PlanetNameEnum.FERENGE);
+		return findWeatherByDay(day, PlanetNameEnum.FERENGE);
 	}
 	
-	@GetMapping("/betasoid/clima/{day}")
+	@GetMapping("/betasoid/weather/{day}")
 	public ResponseEntity<WeatherPredictionDTO> findByDayOfBetasoid(@PathVariable("day") Integer day) {
-		return findClimaByDay(day, PlanetNameEnum.BETASOID);
+		return findWeatherByDay(day, PlanetNameEnum.BETASOID);
 	}
 
-	private ResponseEntity<WeatherPredictionDTO> findClimaByDay(Integer day, PlanetNameEnum planetName) {
+	private ResponseEntity<WeatherPredictionDTO> findWeatherByDay(Integer day, PlanetNameEnum planetName) {
 		if(day <= 0) return ResponseEntity.badRequest().build();
 		
-		var prediction = service.findClimaByDay(day, planetName);
+		var prediction = service.findWeatherByDay(day, planetName);
 		if(prediction == null) return ResponseEntity.notFound().build();
 		
 		return ResponseEntity.ok(prediction);

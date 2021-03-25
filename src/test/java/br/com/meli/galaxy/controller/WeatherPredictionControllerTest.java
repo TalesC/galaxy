@@ -28,61 +28,61 @@ public class WeatherPredictionControllerTest {
 	
 	@Test
 	void mustReturnStatus200OKWhenSearchByFerengeDays() throws Exception {
-		var uri = new URI("/prediction/ferenge/clima/1");
+		var uri = new URI("/prediction/ferenge/weather/1");
 		verifyStatus200OK(uri,  PlanetNameEnum.FERENGE);
 	}
 	
 	@Test
 	void mustReturnStatus400BadRequestWhenSearchByFerengeDays() throws Exception {
-		var uri = new URI("/prediction/ferenge/clima/-1");
+		var uri = new URI("/prediction/ferenge/weather/-1");
 		verifyStatus400BadRequest(uri);
 	}
 	
 	@Test
 	void mustReturnStatus404NotFoundWhenSearchByFerengeDays() throws Exception {
-		var uri = new URI("/prediction/ferenge/clima/1000000");
+		var uri = new URI("/prediction/ferenge/weather/1000000");
 		verifyStatus4004NotFound(uri);
 	}
 		
 
 	@Test
 	void mustReturnStatus200OKWhenSearchByBetasoidDays() throws Exception {
-		var uri = new URI("/prediction/betasoid/clima/1");
+		var uri = new URI("/prediction/betasoid/weather/1");
 		verifyStatus200OK(uri,  PlanetNameEnum.BETASOID);
 	}
 	
 	@Test
 	void mustReturnStatus400BadRequestWhenSearchByBetasoidDays() throws Exception {
-		var uri = new URI("/prediction/betasoid/clima/-1");
+		var uri = new URI("/prediction/betasoid/weather/-1");
 		verifyStatus400BadRequest(uri);
 	}
 	
 	@Test
 	void mustReturnStatus404NotFoundWhenSearchByBetasoidDays() throws Exception {
-		var uri = new URI("/prediction/betasoid/clima/1000000");
+		var uri = new URI("/prediction/betasoid/weather/1000000");
 		verifyStatus4004NotFound(uri);
 	}
 	
 	@Test
 	void mustReturnStatus200OKWhenSearchByVulcanoDays() throws Exception {
-		var uri = new URI("/prediction/vulcano/clima/1");
+		var uri = new URI("/prediction/vulcano/weather/1");
 		verifyStatus200OK(uri,  PlanetNameEnum.VULCANO);
 	}
 	
 	@Test
 	void mustReturnStatus400BadRequestWhenSearchByVulcanoDays() throws Exception {
-		var uri = new URI("/prediction/vulcano/clima/-1");
+		var uri = new URI("/prediction/vulcano/weather/-1");
 		verifyStatus400BadRequest(uri);
 	}
 	
 	@Test
 	void mustReturnStatus404NotFoundWhenSearchByVulcanoDays() throws Exception {
-		var uri = new URI("/prediction/vulcano/clima/1000000");
+		var uri = new URI("/prediction/vulcano/weather/1000000");
 		verifyStatus4004NotFound(uri);
 	}
 
 	private void verifyStatus200OK(URI uri, PlanetNameEnum planet) throws Exception {
-		when(service.findClimaByDay(1, planet)).thenReturn(getClimaPrediction(planet));
+		when(service.findWeatherByDay(1, planet)).thenReturn(getWeatherPrediction(planet));
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 		   .andExpect(MockMvcResultMatchers.status().isOk());
@@ -98,7 +98,7 @@ public class WeatherPredictionControllerTest {
 		   .andExpect(MockMvcResultMatchers.status().isNotFound());
 	}
 	
-	private WeatherPredictionDTO getClimaPrediction(PlanetNameEnum planet) {
+	private WeatherPredictionDTO getWeatherPrediction(PlanetNameEnum planet) {
 		return new WeatherPredictionDTO(1, WeatherStatusEnum.DROUGHT);
 	}
 	
