@@ -1,4 +1,4 @@
-package br.com.meli.galaxy.component;
+package br.com.meli.galaxy.config;
 
 
 
