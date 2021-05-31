@@ -3,9 +3,8 @@ package br.com.meli.galaxy.model;
 import java.awt.Point;
 
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
-import br.com.meli.galaxy.model.inter.CelestialObject;
 
-public class Planet implements CelestialObject {
+public class Planet extends CelestialObject {
 	
 	private PlanetNameEnum planetName;
 	private Integer speedGradesbyDay;
@@ -20,6 +19,10 @@ public class Planet implements CelestialObject {
 	}
 
 	@Override
+	public Point getLocation() {
+		return null;
+	}
+
 	public Point getLocation(Integer day) {
 		var grades = speedGradesbyDay * day;
 		Double positionX =  Math.sin(grades) * orbitRadiousKm;
@@ -35,4 +38,5 @@ public class Planet implements CelestialObject {
 	public Integer getDaysByYear(Integer years) {
 		return (years * 360) / Math.abs(speedGradesbyDay);
 	}
+
 }
