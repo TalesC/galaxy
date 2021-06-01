@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import br.com.meli.galaxy.dto.WeatherPredictionDTO;
+import br.com.meli.galaxy.service.dto.WeatherPredictionDTO;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 

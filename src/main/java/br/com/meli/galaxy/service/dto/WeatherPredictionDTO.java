@@ -1,11 +1,11 @@
-package br.com.meli.galaxy.dto;
+package br.com.meli.galaxy.service.dto;
 
 import br.com.meli.galaxy.model.enums.WeatherStatusEnum;
 
 public class WeatherPredictionDTO {
 	
-	private Integer day;
-	private WeatherStatusEnum weather;
+	protected Integer day;
+	protected WeatherStatusEnum weather;
 	
 	public WeatherPredictionDTO(Integer day, WeatherStatusEnum weather) {
 		super();
@@ -17,8 +17,6 @@ public class WeatherPredictionDTO {
 		return day;
 	}
 
-	public WeatherStatusEnum getWeather() {
-		return weather;
-	}
+	public String getWeather() { return weather.name(); }
 
 }

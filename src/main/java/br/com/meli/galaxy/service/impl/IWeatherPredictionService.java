@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.meli.galaxy.dto.WeatherPredictionDTO;
+import br.com.meli.galaxy.service.dto.WeatherPredictionDTO;
 import br.com.meli.galaxy.model.SimpleSolarSystem;
 import br.com.meli.galaxy.model.builder.SimpleSolarSystemBuilder;
 import br.com.meli.galaxy.model.ent.WeatherPrediction;

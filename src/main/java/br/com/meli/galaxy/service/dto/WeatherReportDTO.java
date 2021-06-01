@@ -1,13 +1,13 @@
-package br.com.meli.galaxy.dto;
+package br.com.meli.galaxy.service.dto;
 
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public class WeatherReportDTO {
 	
-	private Integer droughtDays;
-	private Integer rainDays;
-	private Integer optimalDays;
-	private PlanetNameEnum onPlanet;
+	protected Integer droughtDays;
+	protected Integer rainDays;
+	protected Integer optimalDays;
+	protected PlanetNameEnum onPlanet;
 	
 	public WeatherReportDTO(Integer droughtDays, Integer rainDays, Integer optimalDays, PlanetNameEnum onPlanet) {
 		super();

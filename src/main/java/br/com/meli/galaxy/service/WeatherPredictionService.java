@@ -2,7 +2,7 @@ package br.com.meli.galaxy.service;
 
 import java.util.List;
 
-import br.com.meli.galaxy.dto.WeatherPredictionDTO;
+import br.com.meli.galaxy.service.dto.WeatherPredictionDTO;
 import br.com.meli.galaxy.model.enums.PlanetNameEnum;
 
 public interface WeatherPredictionService {

@@ -21,7 +21,7 @@ public class WeatherPredictionServiceTest {
 		
 		assertThat(prediction).isNotNull();
 		assertThat(prediction.getDay()).isEqualTo(1);
-		assertThat(prediction.getWeather()).isEqualTo(WeatherStatusEnum.NONE);
+		assertThat(prediction.getWeather()).isEqualTo(WeatherStatusEnum.NONE.toString());
 	}
 	
 	@Test
